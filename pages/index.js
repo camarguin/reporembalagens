@@ -9,10 +9,16 @@ export default function Home() {
         Embalagens em Geral
       </Text>
       <Container w="95%" maxW maxWidth="1920px">
-        <Stack direction="column" spacing="5">
-          <Text variant="h2">Test1</Text>
+        <Stack direction="column" spacing="4">
+          <Text variant="h2">Descartáveis</Text>
           <Products />
+          <Text variant="h2">Isopor</Text>
           <Products />
+          <Text variant="h2">Alumínio</Text>
+          <Products />
+          <Text variant="h2">Papel</Text>
+          <Products />
+          <Text variant="h2">Sacolas</Text>
           <Products />
         </Stack>
 

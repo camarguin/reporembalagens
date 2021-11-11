@@ -140,42 +140,42 @@ const Header = ({ isUserPage }) => {
             onClick={onToggle}
             _focus={{ outline: "none" }}
           />
-          <NextLink href="#">
+          <NextLink href="/descartaveis">
             <Button variant="linkMobile" as="a" fontSize="2xl">
               Descartáveis
             </Button>
           </NextLink>
-          <NextLink href="#">
+          <NextLink href="/isopor">
             <Button variant="linkMobile" as="a">
               Isopor
             </Button>
           </NextLink>
-          <NextLink href="#">
+          <NextLink href="/aluminio">
             <Button variant="linkMobile" as="a">
               Alumínio
             </Button>
           </NextLink>
-          <NextLink href="#">
+          <NextLink href="/papel">
             <Button variant="linkMobile" as="a">
               Papel
             </Button>
           </NextLink>
-          <NextLink href="#">
+          <NextLink href="/galvanotek">
             <Button variant="linkMobile" as="a">
               Galvanotek
             </Button>
           </NextLink>
-          <NextLink href="#">
+          <NextLink href="/pleion">
             <Button variant="linkMobile" as="a">
               Pleion
             </Button>
           </NextLink>
-          <NextLink href="#">
+          <NextLink href="/plastico">
             <Button variant="linkMobile" as="a">
               Plástico
             </Button>
           </NextLink>
-          <NextLink href="#">
+          <NextLink href="/filmpvc">
             <Button variant="linkMobile" as="a">
               Film PVC
             </Button>
