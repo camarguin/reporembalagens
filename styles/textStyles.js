@@ -13,6 +13,11 @@ export const textStyles = {
       fontSize: "1.5rem",
       color: "myGreen.300",
     },
+    p: {
+      color: "white",
+      fontWeight: "normal",
+      fontSize: "1.1rem"
+    },
     productName: {
       fontSize: "1.5rem",
       fontWeight: "medium"

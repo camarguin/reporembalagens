@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from 'next/image';
 import NextLink from 'next/link';
 import { Flex, Button, IconButton, Fade, HStack, VStack, useMediaQuery, useDisclosure } from '@chakra-ui/react';
@@ -6,10 +6,19 @@ import { BiUserCircle, BiMenu } from 'react-icons/bi';
 import { AiOutlineShoppingCart, AiOutlineClose } from 'react-icons/ai';
 import reporLogo from '../public/ReporLogoMenu.svg';
 import whiteReporLogo from '../public/WhiteReporLogoMenu.svg';
+import MyCart from "./MyCart";
 
 const Header = ({ isUserPage }) => {
   const [isSmallerThan1024] = useMediaQuery("(max-width: 1023px)")
   const { isOpen, onToggle } = useDisclosure()
+  const [isCartOpen, setIsCartOpen] = useState(false)
+
+  function openCart(e) {
+    setIsCartOpen(!isCartOpen)
+  }
+  function closeCart(e) {
+    setIsCartOpen(false)
+  }
 
   return (
     <Flex direction="column" bgColor={["myGreen.300", "myGreen.300", "white"]} py={["2", "1", "0"]} px={["10px", "20px", "50px"]}>
@@ -19,6 +28,7 @@ const Header = ({ isUserPage }) => {
           variant="link"
           color={["white", "white", "myGreen.300"]}
           icon={<AiOutlineShoppingCart />}
+          onClick={openCart}
           display={["flex", "flex", "none"]}
           fontSize={["2rem", "2rem", "2.1rem"]}
           _focus={{ outline: "none" }}
@@ -29,14 +39,16 @@ const Header = ({ isUserPage }) => {
           </NextLink>
         </Flex>
         <Flex display={["none", "none", "flex"]}>
-          <IconButton
-            aria-label="Sua conta"
-            variant="link"
-            color="myGreen.300"
-            icon={<BiUserCircle />}
-            fontSize={["2rem", "2rem", "2.1rem"]}
-            _focus={{ outline: "none" }}
-          />
+          <NextLink href="/conta">
+            <IconButton
+              aria-label="Sua conta"
+              variant="link"
+              color="myGreen.300"
+              icon={<BiUserCircle />}
+              fontSize={["2rem", "2rem", "2.1rem"]}
+              _focus={{ outline: "none" }}
+            />
+          </NextLink>
           <IconButton
             aria-label="Seu carrinho"
             variant="link"
@@ -44,6 +56,7 @@ const Header = ({ isUserPage }) => {
             icon={<AiOutlineShoppingCart />}
             fontSize={["2rem", "2rem", "2.1rem"]}
             _focus={{ outline: "none" }}
+            onClick={openCart}
           />
         </Flex>
         <IconButton
@@ -169,6 +182,9 @@ const Header = ({ isUserPage }) => {
           </NextLink>
         </VStack>
         // </Fade>
+      }
+      {isCartOpen &&
+        <MyCart closeOnClick={closeCart} />
       }
     </Flex>
   );
