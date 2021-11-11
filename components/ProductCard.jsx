@@ -72,10 +72,8 @@ const ProductCard = ({ productImg, productName, productDesc, productCod }) => {
         border="1px"
         borderRadius="10px"
         borderColor="myGreen.300"
-        // width="350px"
         height="250px"
         textAlign="center"
-
       >
         <Box width="100%" maxHeight="150px" p="10px 0">
           <Image src={productImg} alt="Produto Imagem" boxSize="fit" margin="0 auto" maxHeight="150px" />

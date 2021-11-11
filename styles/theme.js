@@ -21,10 +21,11 @@ export const customTheme = extendTheme({
   },
   colors: {
     myGreen: {
+      50: '#DAE9E3',
       100: '#86B8A4',
       200: '#6DAA92',
       300: '#0C7149',
-    }
+    },
   },
   components: {
     Button,

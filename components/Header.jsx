@@ -12,7 +12,7 @@ const Header = ({ isUserPage }) => {
   const { isOpen, onToggle } = useDisclosure()
 
   return (
-    <Flex zIndex={1} direction="column" bgColor={["myGreen.300", "myGreen.300", "white"]} py={["2", "1", "0"]} px={["10px", "20px", "50px"]}>
+    <Flex direction="column" bgColor={["myGreen.300", "myGreen.300", "white"]} py={["2", "1", "0"]} px={["10px", "20px", "50px"]}>
       <Flex w="100%" justify="space-between" align="center" h={["50px", "60px", "80px"]} >
         <IconButton
           aria-label="Seu carrinho"
@@ -102,73 +102,73 @@ const Header = ({ isUserPage }) => {
         </HStack>
       }
       {(isSmallerThan1024 && isOpen) &&
-        <Fade in={isOpen} >
-          <VStack
-            h="100vh"
-            w="100%"
-            zIndex={1}
-            position="fixed"
-            top="0"
-            left="0"
-            justify="center"
-            bgColor="myGreen.300"
-            overflowY="auto"
-          >
-            <IconButton
-              aria-label="Fechar menu"
-              variant="link"
-              position="absolute"
-              right="30px"
-              top="20px"
-              color={["white", "white", "myGreen.300"]}
-              icon={<AiOutlineClose />}
-              display={["flex", "flex", "none"]}
-              fontSize="2rem"
-              onClick={onToggle}
-              _focus={{ outline: "none" }}
-            />
-            <NextLink href="#">
-              <Button variant="linkMobile" as="a" fontSize="2xl">
-                Descartáveis
-              </Button>
-            </NextLink>
-            <NextLink href="#">
-              <Button variant="linkMobile" as="a">
-                Isopor
-              </Button>
-            </NextLink>
-            <NextLink href="#">
-              <Button variant="linkMobile" as="a">
-                Alumínio
-              </Button>
-            </NextLink>
-            <NextLink href="#">
-              <Button variant="linkMobile" as="a">
-                Papel
-              </Button>
-            </NextLink>
-            <NextLink href="#">
-              <Button variant="linkMobile" as="a">
-                Galvanotek
-              </Button>
-            </NextLink>
-            <NextLink href="#">
-              <Button variant="linkMobile" as="a">
-                Pleion
-              </Button>
-            </NextLink>
-            <NextLink href="#">
-              <Button variant="linkMobile" as="a">
-                Plástico
-              </Button>
-            </NextLink>
-            <NextLink href="#">
-              <Button variant="linkMobile" as="a">
-                Film PVC
-              </Button>
-            </NextLink>
-          </VStack>
-        </Fade>
+        // <Fade in={isOpen} >
+        <VStack
+          h="100vh"
+          w="100%"
+          zIndex={999}
+          position="fixed"
+          top="0"
+          left="0"
+          justify="center"
+          bgColor="myGreen.300"
+          overflowY="auto"
+        >
+          <IconButton
+            aria-label="Fechar menu"
+            variant="link"
+            position="absolute"
+            right="30px"
+            top="20px"
+            color={["white", "white", "myGreen.300"]}
+            icon={<AiOutlineClose />}
+            display={["flex", "flex", "none"]}
+            fontSize="2rem"
+            onClick={onToggle}
+            _focus={{ outline: "none" }}
+          />
+          <NextLink href="#">
+            <Button variant="linkMobile" as="a" fontSize="2xl">
+              Descartáveis
+            </Button>
+          </NextLink>
+          <NextLink href="#">
+            <Button variant="linkMobile" as="a">
+              Isopor
+            </Button>
+          </NextLink>
+          <NextLink href="#">
+            <Button variant="linkMobile" as="a">
+              Alumínio
+            </Button>
+          </NextLink>
+          <NextLink href="#">
+            <Button variant="linkMobile" as="a">
+              Papel
+            </Button>
+          </NextLink>
+          <NextLink href="#">
+            <Button variant="linkMobile" as="a">
+              Galvanotek
+            </Button>
+          </NextLink>
+          <NextLink href="#">
+            <Button variant="linkMobile" as="a">
+              Pleion
+            </Button>
+          </NextLink>
+          <NextLink href="#">
+            <Button variant="linkMobile" as="a">
+              Plástico
+            </Button>
+          </NextLink>
+          <NextLink href="#">
+            <Button variant="linkMobile" as="a">
+              Film PVC
+            </Button>
+          </NextLink>
+        </VStack>
+        // </Fade>
       }
     </Flex>
   );

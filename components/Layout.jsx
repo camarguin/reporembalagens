@@ -11,7 +11,7 @@ const Layout = ({ children, isShortFooter, isUserPage }) => {
       {!isShortFooter ?
         <Footer /> :
         <footer>
-          <Text variant="footer" textAlign="center">
+          <Text variant="footer" textAlign="center" color="myGreen.300">
             Repor Embalagens 2021 © - Todos os direitos reservados
           </Text>
         </footer>
