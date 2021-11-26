@@ -9,7 +9,10 @@ export const buttonStyles = {
       color: "white",
       _hover: {
         bg: darken("myGreen.300", 10),
-      }
+        _disabled: {
+          bgColor: "myGreen.300"
+        }
+      },
     },
     link: {
       bg: "transparent",
@@ -25,7 +28,7 @@ export const buttonStyles = {
     },
     linkMobile: {
       bg: "transparent",
-      color: "myGreen.100",
+      color: "myGreen.50",
       fontSize: "2xl",
       _focus: {
         outline: "none"

@@ -1,7 +1,7 @@
 import { Stack, Text, Button, Flex } from '@chakra-ui/react';
 import { AiFillEye } from 'react-icons/ai';
 
-const MyInfo = () => {
+const MyInfo = ({ user, userId }) => {
   return (
     <Stack
       width={["100%", "100%", "600px"]}
@@ -13,7 +13,7 @@ const MyInfo = () => {
         Minhas informações
       </Text>
       <Stack>
-        <Text><strong>Nome: </strong> Rodrigo Nascimento da Silva</Text>
+        <Text><strong>Nome: </strong> {user.name}</Text>
         <Text><strong>Telefone: </strong> (34) 91919-919191</Text>
         <Flex direction="row">
           <Text><strong>CPF/CNPJ: </strong> ***.***.789-10</Text>
@@ -21,7 +21,7 @@ const MyInfo = () => {
             <AiFillEye />
           </Button>
         </Flex>
-        <Text><strong>Email: </strong> email@email.com.br</Text>
+        <Text><strong>Email: </strong> {user.email}</Text>
       </Stack>
       <Text variant="h2" textAlign="center">
         Meu Endereço

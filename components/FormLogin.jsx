@@ -1,12 +1,52 @@
+import { useState } from 'react';
 import NextLink from 'next/link';
+import { useRouter } from 'next/router';
 import {
   Flex, FormControl, FormLabel, FormErrorMessage, Button,
-  FormHelperText, Image, Input, useMediaQuery, Box, Text, Stack
+  FormHelperText, Image, Input, useMediaQuery, Box, Text, Stack, useToast,
 } from "@chakra-ui/react"
+import { FcGoogle } from 'react-icons/fc'
+import { signIn } from 'next-auth/client'
 
+// provider={providers.credentials}
 
-const FormLogin = () => {
+const FormLogin = ({ providers, csrfToken }) => {
   const [isSmallerThan800] = useMediaQuery("(max-width: 800px)")
+  const toast = useToast()
+  const initialState = { email: '', password: '' }
+  const [userData, setUserData] = useState(initialState)
+  const { email, password } = userData
+  const router = useRouter()
+  const [isLoading, setIsLoading] = useState(false)
+
+  function handleChangeInput(e) {
+    const { name, value } = e.target
+    setUserData({ ...userData, [name]: value })
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+    setIsLoading(true)
+    const status = await signIn('credentials', {
+      redirect: false,
+      email: email,
+      password: password
+    })
+    if (status.error) {
+      setIsLoading(false)
+      return toast({
+        title: 'Erro',
+        description: status.error,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      })
+    }
+    console.log(status)
+    setUserData(initialState)
+    setIsLoading(false)
+    return router.push('/conta')
+  }
 
   return (
     <Flex direction="row" align={["left", "left", "center"]} justify="space-between">
@@ -18,21 +58,30 @@ const FormLogin = () => {
           <Text>
             Não possui conta? &nbsp;
           </Text>
-          <Text cursor="pointer" ><NextLink href="#"><u>Clique aqui para criar</u></NextLink></Text>
+          <Text cursor="pointer" ><NextLink href="/conta/cadastro"><u>Clique aqui para criar</u></NextLink></Text>
         </Flex>
-        <FormControl id="email" width={["100%", "350px", "400px"]}>
-          {/* <FormLabel>Email address</FormLabel> */}
+        <FormControl id="loginForm" width={["100%", "350px", "400px"]} >
           <Stack spacing={4}>
-            <Input type="email" placeholder="Email de usuário" bgColor="gray.100" size="lg" />
-            <Input type="password" placeholder="Senha de usuário" bgColor="gray.100" size="lg" />
+            <Input id="email" type="email" name="email" value={email} onChange={handleChangeInput} placeholder="Email de usuário" bgColor="gray.100" size="lg" />
+            <Input id="password" type="password" name="password" value={password} onChange={handleChangeInput} placeholder="Senha de usuário" bgColor="gray.100" size="lg" />
           </Stack>
           <FormHelperText cursor="pointer" width="max-content">
-            <NextLink href="#">Esqueci minha senha</NextLink>
+            {/* <NextLink href="#">Esqueci minha senha</NextLink> */}
           </FormHelperText>
-          <Flex justify="center" py="20px">
-            <Button variant="primary" padding="0px 40px" type="submit">
+          <Flex direction="column" justify="center" align="center" py="20px">
+            <Button onClick={handleSubmit} isLoading={isLoading} variant="primary" padding="0px 40px" type="submit" maxW="150px" marginBottom="10px">
               Entrar
             </Button>
+            {/* <Stack direction="row" align="center" width="100%" marginBottom="10px">
+              <hr style={{ width: "100%" }} />
+              <Text textAlign="center">Ou</Text>
+              <hr style={{ width: "100%" }} />
+            </Stack> */}
+            {/* <Button onClick={() => console.log()} >
+              <FcGoogle fontSize="1.5rem" style={{ marginRight: "5px" }} />
+              Entrar com Google
+            </Button> */}
+            <input type="hidden" defaultValue={csrfToken} />
           </Flex>
         </FormControl>
       </Stack>
