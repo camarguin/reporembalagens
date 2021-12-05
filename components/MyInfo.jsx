@@ -2,6 +2,7 @@ import { Stack, Text, Button, Flex } from '@chakra-ui/react';
 import { AiFillEye } from 'react-icons/ai';
 
 const MyInfo = ({ user, userId }) => {
+  console.log(user)
   return (
     <Stack
       width={["100%", "100%", "600px"]}
@@ -14,9 +15,9 @@ const MyInfo = ({ user, userId }) => {
       </Text>
       <Stack>
         <Text><strong>Nome: </strong> {user.name}</Text>
-        <Text><strong>Telefone: </strong> (34) 91919-919191</Text>
+        <Text><strong>Telefone: </strong> {user.telefone}</Text>
         <Flex direction="row">
-          <Text><strong>CPF/CNPJ: </strong> ***.***.789-10</Text>
+          <Text><strong>CPF/CNPJ: </strong> {user.cpf}</Text>
           <Button variant="link" _focus={{ outline: "none" }} color="black">
             <AiFillEye />
           </Button>
@@ -27,10 +28,10 @@ const MyInfo = ({ user, userId }) => {
         Meu Endereço
       </Text>
       <Stack>
-        <Text><strong>Rua/Número: </strong> Rua Amancio Flor, 999</Text>
-        <Text><strong>Bairro: </strong> Jardim Scandinavia</Text>
-        <Text><strong>Complemento: </strong> Casa</Text>
-        <Text><strong>CEP: </strong> 12345-678</Text>
+        <Text><strong>Rua/Número: </strong> {user.endereco?.rua}</Text>
+        <Text><strong>Bairro: </strong> {userId}</Text>
+        <Text><strong>Complemento: </strong> {user.endereco?.complemento}</Text>
+        <Text><strong>CEP: </strong> {user.endereco?.cep}</Text>
       </Stack>
       <Flex justify="center" bottom="0">
         <Button variant="primary" maxWidth="130px">

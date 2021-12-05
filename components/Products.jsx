@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import ProductCard from './ProductCard';
 
-const Products = ({ products }) => {
+const Products = ({ myProducts }) => {
+
+  const swiperItems = myProducts.map(product => {
+    return (
+      <SwiperSlide key={product._id}>
+        <ProductCard productImg={product.image} productName={product.nome} productDesc={product.descricao} productCod={"COD " + product.cod} />
+      </SwiperSlide>
+    )
+  })
+
   return (
     <Swiper
       modules={[Navigation]}
-      slidesPerView={1}
+      slidesPerView={3}
       spaceBetween={10}
       navigation
       pagination={{
@@ -29,24 +38,10 @@ const Products = ({ products }) => {
           "spaceBetween": 50
         }
       }}
-      onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log('slide change')}
+    // onSwiper={(swiper) => console.log(swiper)}
+    // onSlideChange={() => console.log('slide change')}
     >
-      <SwiperSlide>
-        <ProductCard productImg="/product.png" productName="Canudo Tradicional" productDesc="Sache c/ 100 unid PT" productCod="COD 1347" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <ProductCard productImg="/product.png" productName="Canudo Tradicional" productDesc="Sache c/ 100 unid PT" productCod="COD 1347" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <ProductCard productImg="/product.png" productName="Canudo Tradicional" productDesc="Sache c/ 100 unid PT" productCod="COD 1347" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <ProductCard productImg="/product.png" productName="Canudo Tradicional" productDesc="Sache c/ 100 unid PT" productCod="COD 1347" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <ProductCard productImg="/product.png" productName="Canudo Tradicional" productDesc="Sache c/ 100 unid PT" productCod="COD 1347" />
-      </SwiperSlide>
+      {swiperItems}
     </Swiper >
   );
 };

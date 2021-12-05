@@ -10,7 +10,7 @@ connectDB()
 
 export default NextAuth({
   session: {
-    jwt: true
+    jwt: true,
   },
   providers: [
     Providers.Credentials({
@@ -66,26 +66,12 @@ export default NextAuth({
   database: process.env.DATABASE_URL,
   callbacks: {
     session: async (session, user) => {
+      const resUser = await Users.findById(user.sub)
       session.userId = user.sub
+      session.user = resUser
+      // session.user = resUser
+      console.log(resUser)
       return Promise.resolve(session)
-    }
+    },
   }
 })
-
-// const loginUser = async ({ password, user }) => {
-//   // if (!user.password) {
-//   //   throw new Error("Accounts have to login with OAuth or Email.")
-//   // }
-
-//   const isMatch = await bcrypt.compare(password, user.password)
-//   if (!isMatch) {
-//     throw new Error("Senha incorreta");
-//   }
-
-//   // if (!user.emailVerified) {
-//   //   throw new Error("Success! Check your email.");
-//   // }
-
-//   console.log(user)
-//   return user;
-// }

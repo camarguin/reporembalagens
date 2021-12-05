@@ -5,7 +5,7 @@ import {
 } from '@chakra-ui/react';
 import { useState } from 'react';
 
-const ProductCard = ({ productImg, productName, productDesc, productCod }) => {
+const ProductCard = ({ productImg, productNome, productDescricao, productCod }) => {
   const [isHover, setIsHover] = useState(false)
   const [qty, setQty] = useState(1)
 
@@ -76,14 +76,14 @@ const ProductCard = ({ productImg, productName, productDesc, productCod }) => {
         textAlign="center"
       >
         <Box width="100%" maxHeight="150px" p="10px 0">
-          <Image src={productImg} alt="Produto Imagem" boxSize="fit" margin="0 auto" maxHeight="150px" />
+          <Image src={productImg} alt="Produto Imagem" boxSize="fit" margin="0 auto" maxHeight="140px" />
         </Box>
         <VStack spacing="0">
           <Text variant="productName">
-            {productName}
+            {productNome}
           </Text>
           <Text variant="productDescription">
-            {productDesc}
+            {productDescricao}
           </Text>
           <Text variant="productCode">
             {productCod}
