@@ -34,6 +34,11 @@ export const textStyles = {
       py: 3,
       fontWeight: "extrabold",
       fontSize: "1.2rem",
+    },
+    error: {
+      fontSize: "1.2rem",
+      color: "red",
+      fontWeight: "bold",
     }
   }
 }

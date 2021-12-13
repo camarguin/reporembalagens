@@ -6,14 +6,15 @@ connectDB()
 export default async (req, res) => {
   switch (req.method) {
     case "GET":
-      await getAluminioProducts(req, res)
+      await getCategoryProducts(req, res)
       break;
   }
 }
 
-const getAluminioProducts = async (req, res) => {
+const getCategoryProducts = async (req, res) => {
+  const { category } = req.query
   try {
-    const products = await Products.find({ category: { $eq: 'aluminio' } })
+    const products = await Products.find({ category: { $eq: category } })
     res.json({
       status: 'success',
       result: products.length,

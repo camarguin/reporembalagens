@@ -10,7 +10,8 @@ const Products = ({ myProducts }) => {
   const swiperItems = myProducts.map(product => {
     return (
       <SwiperSlide key={product._id}>
-        <ProductCard productImg={product.image} productName={product.nome} productDesc={product.descricao} productCod={"COD " + product.cod} />
+        {/* <ProductCard productImg={product.image} productNome={product.nome} productDescricao={product.descricao} productCod={"COD " + product.cod} /> */}
+        <ProductCard product={product} />
       </SwiperSlide>
     )
   })

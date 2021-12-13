@@ -4,8 +4,8 @@ import { AiOutlineClose } from 'react-icons/ai';
 import CartOrder from './CartOrder';
 import EmptyCart from './EmptyCart';
 
-const MyCart = ({ closeOnClick }) => {
-  const [isEmpty, setIsEmpty] = useState(true)
+const MyCart = ({ closeOnClick, cart }) => {
+  const [isEmpty, setIsEmpty] = useState(false)
   return (
     <Container
       maxW={["100%", "100%", "600px"]}

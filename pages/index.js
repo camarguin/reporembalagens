@@ -28,7 +28,7 @@ export default function Home({ products, result }) {
         Embalagens em Geral
       </Text>
       <Container w="95%" maxW maxWidth="1920px">
-        <Stack direction="column" spacing="4">
+        <Stack direction="column" spacing="2">
           <Text variant="h2">Descartáveis</Text>
           <Products myProducts={productsList.filter((product) => product.category.includes("descartavel"))} />
           <Text variant="h2">Isopor</Text>
