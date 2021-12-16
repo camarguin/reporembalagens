@@ -4,9 +4,12 @@ import { AiOutlineClose } from 'react-icons/ai';
 import CartOrder from './CartOrder';
 import EmptyCart from './EmptyCart';
 import { DataContext } from '../context/GlobalState';
+import { postData } from '../utils/fetchData';
+// import { useSession } from 'next-auth/client';
 
-const MyCart = ({ closeOnClick }) => {
+const MyCart = ({ closeOnClick, user }) => {
   const { state, dispatch } = useContext(DataContext)
+  // const [session, loading] = useSession()
   const { cart } = state
   const [isEmpty, setIsEmpty] = useState(cart.length === 0)
   console.log(cart)
@@ -53,17 +56,17 @@ const MyCart = ({ closeOnClick }) => {
           <Stack py="10px" >
             {/* <CartOrder orderQty="10" orderName="Tradicional Canudo" /> */}
             {cart.map(product => (
-              <CartOrder item={product} dispatch={dispatch} cart={cart} />
+              <CartOrder key={product._id} item={product} dispatch={dispatch} cart={cart} />
             ))}
           </Stack>
           <Flex width="100%" justify="center" py="50px">
-            <Button variant="primary" bgColor="myGreen.100" >
+            <Button variant="primary" bgColor="myGreen.100" onClick={() => postData("order", { cart, user }).then(res => console.log(res))}>
               Pedir Orçamento
             </Button>
           </Flex>
         </>
       }
-    </Container>
+    </Container >
   );
 };
 

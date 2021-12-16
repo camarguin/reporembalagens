@@ -1,4 +1,4 @@
-const baseUrl = process.env.NEXTAUTH_URL
+const baseUrl = process.env.NEXT_PUBLIC_API_URL
 
 export const getData = async (url, token) => {
   const res = await fetch(`${baseUrl}/api/${url}`, {
@@ -6,6 +6,20 @@ export const getData = async (url, token) => {
     headers: {
       'Authorization': token
     }
+  })
+
+  const data = await res.json()
+  return data
+}
+
+export const postData = async (url, post, token) => {
+  const res = await fetch(`${baseUrl}/api/${url}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': token
+    },
+    body: JSON.stringify(post)
   })
 
   const data = await res.json()

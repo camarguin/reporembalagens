@@ -1,14 +1,13 @@
 import mongoose from "mongoose";
 
+
 const orderSchema = new mongoose.Schema({
-  products: [
-    {
-      name: String,
-      qty: Number
-    }
-  ],
+  products: {
+    type: Array,
+  },
   user: {
     type: String,
+    required: true
   },
   paid: {
     type: Boolean,
