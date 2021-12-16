@@ -15,7 +15,7 @@ const MyInfo = ({ user, userId }) => {
       </Text>
       <Stack>
         <Text><strong>Nome: </strong> {user.name}</Text>
-        <Text><strong>Telefone: </strong> {user.telefone}</Text>
+        <Text><strong>Telefone: </strong> {user.phone}</Text>
         <Flex direction="row">
           <Text><strong>CPF/CNPJ: </strong> {user.cpf}</Text>
           <Button variant="link" _focus={{ outline: "none" }} color="black">
@@ -28,10 +28,10 @@ const MyInfo = ({ user, userId }) => {
         Meu Endereço
       </Text>
       <Stack>
-        <Text><strong>Rua/Número: </strong> {user.endereco?.rua}</Text>
-        <Text><strong>Bairro: </strong> {userId}</Text>
-        <Text><strong>Complemento: </strong> {user.endereco?.complemento}</Text>
-        <Text><strong>CEP: </strong> {user.endereco?.cep}</Text>
+        <Text><strong>Rua/Número: </strong> {user.address?.street}</Text>
+        <Text><strong>Bairro: </strong> {user.address.district}</Text>
+        <Text><strong>Complemento: </strong> {user.address?.complement}</Text>
+        <Text><strong>CEP: </strong> {user.address?.cep}</Text>
       </Stack>
       <Flex justify="center" bottom="0">
         <Button variant="primary" maxWidth="130px">

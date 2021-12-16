@@ -1,11 +1,16 @@
 import { Container, Text, Stack, IconButton, Grid, GridItem, Button, Flex } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import CartOrder from './CartOrder';
 import EmptyCart from './EmptyCart';
+import { DataContext } from '../context/GlobalState';
 
-const MyCart = ({ closeOnClick, cart }) => {
-  const [isEmpty, setIsEmpty] = useState(false)
+const MyCart = ({ closeOnClick }) => {
+  const { state, dispatch } = useContext(DataContext)
+  const { cart } = state
+  const [isEmpty, setIsEmpty] = useState(cart.length === 0)
+  console.log(cart)
+
   return (
     <Container
       maxW={["100%", "100%", "600px"]}
@@ -46,9 +51,10 @@ const MyCart = ({ closeOnClick, cart }) => {
             </GridItem>
           </Grid>
           <Stack py="10px" >
-            <CartOrder orderQty="10" orderName="Tradicional Canudo" />
-            <CartOrder orderQty="10" orderName="Tradicional Canudo" />
-            <CartOrder orderQty="10" orderName="Tradicional Canudo" />
+            {/* <CartOrder orderQty="10" orderName="Tradicional Canudo" /> */}
+            {cart.map(product => (
+              <CartOrder item={product} dispatch={dispatch} cart={cart} />
+            ))}
           </Stack>
           <Flex width="100%" justify="center" py="50px">
             <Button variant="primary" bgColor="myGreen.100" >

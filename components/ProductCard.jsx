@@ -88,10 +88,10 @@ const ProductCard = ({ product }) => {
         </Box>
         <VStack spacing="0">
           <Text variant="productName">
-            {product.nome}
+            {product.name}
           </Text>
           <Text variant="productDescription">
-            {product.descricao}
+            {product.description}
           </Text>
           <Text variant="productCode">
             COD {product.cod}

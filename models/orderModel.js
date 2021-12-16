@@ -7,10 +7,16 @@ const orderSchema = new mongoose.Schema({
       qty: Number
     }
   ],
-
+  user: {
+    type: String,
+  },
+  paid: {
+    type: Boolean,
+    default: false
+  },
 }, {
   timestamps: true
 })
 
-let Dataset = mongoose.models.user || mongoose.model('order', userSchema)
+let Dataset = mongoose.models.order || mongoose.model('order', orderSchema)
 export default Dataset

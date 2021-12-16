@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema({
-  nome: {
+  name: {
     type: String,
     trim: true,
     required: true,
   },
-  descricao: {
+  description: {
     type: String,
     trim: true,
   },

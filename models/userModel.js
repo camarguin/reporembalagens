@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-  nome: {
+  name: {
     type: String,
     default: ''
     // required: true,
   },
-  telefone: {
+  phone: {
     type: String,
     default: ''
   },
@@ -25,16 +25,16 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  endereco: {
-    rua: {
+  address: {
+    street: {
       type: String,
       default: ''
     },
-    bairro: {
+    district: {
       type: String,
       default: ''
     },
-    complemento: {
+    complement: {
       type: String,
       default: ''
     },
@@ -43,7 +43,7 @@ const userSchema = new mongoose.Schema({
       default: ''
     }
   },
-  tipo: {
+  type: {
     type: String,
     default: 'user'
   }

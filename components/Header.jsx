@@ -300,7 +300,7 @@ const Header = ({ isUserPage }) => {
         </VStack>
       }
       {isCartOpen &&
-        <MyCart closeOnClick={closeCart} cart={cart} />
+        <MyCart closeOnClick={closeCart} />
       }
     </Flex>
   );
