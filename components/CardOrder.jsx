@@ -1,16 +1,22 @@
-import { Grid, Text } from '@chakra-ui/react';
+import { Grid, Text, Icon } from '@chakra-ui/react';
+import { AiOutlineExclamationCircle, AiOutlineCheckCircle } from 'react-icons/ai'
+import moment from 'moment';
 
-const CardOrder = ({ orderQty, orderName, orderDate }) => {
+const CardOrder = ({ order }) => {
+  const date = moment(order.createdAt).format('DD/MM/YYYY');
+  console.log(date);
+
   return (
-    <Grid templateColumns={["0.5fr 1fr 0.5fr", "0.5fr 1fr 0.5fr", "40px 200px 150px"]} bgColor="myGreen.50" p="20px" borderRadius="10px">
-      <Text>
-        {orderQty}
+    <Grid templateColumns={["0.5fr 1fr 0.5fr", "0.5fr 1fr 0.5fr", "30px 400px 100px"]} bgColor="myGreen.50" p="20px" borderRadius="10px">
+      {order.paid ?
+        <Icon as={AiOutlineCheckCircle} /> :
+        <Icon as={AiOutlineExclamationCircle} />
+      }
+      <Text fontSize="1rem">
+        {order._id}
       </Text>
       <Text>
-        {orderName}
-      </Text>
-      <Text>
-        {orderDate}
+        {date}
       </Text>
     </Grid>
   );

@@ -4,8 +4,6 @@ import { Container, Flex, Text, Button } from "@chakra-ui/react";
 import reporLogo from '../public/ReporLogoMenu.svg';
 import errorIllustration from '../public/error404.svg';
 
-
-
 export default function Custom404() {
   return (
     <>

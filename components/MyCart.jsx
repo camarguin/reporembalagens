@@ -1,18 +1,41 @@
-import { Container, Text, Stack, IconButton, Grid, GridItem, Button, Flex } from '@chakra-ui/react';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
+import { useRouter } from 'next/router'
+import { Container, Text, Stack, IconButton, Grid, GridItem, Button, Flex, useToast } from '@chakra-ui/react';
 import { AiOutlineClose } from 'react-icons/ai';
 import CartOrder from './CartOrder';
 import EmptyCart from './EmptyCart';
 import { DataContext } from '../context/GlobalState';
 import { postData } from '../utils/fetchData';
-// import { useSession } from 'next-auth/client';
 
 const MyCart = ({ closeOnClick, user }) => {
+  const router = useRouter()
+  const toast = useToast()
   const { state, dispatch } = useContext(DataContext)
-  // const [session, loading] = useSession()
+  const [myUser, setMyUser] = useState(user)
   const { cart } = state
   const [isEmpty, setIsEmpty] = useState(cart.length === 0)
-  console.log(cart)
+  useEffect(() => {
+    setIsEmpty(cart.length === 0)
+  }, [cart])
+
+  function clearCart() {
+    window.localStorage.removeItem("reporembalagens_cart")
+  }
+
+  function handlePedirOrcamento() {
+    if (!myUser) {
+      toast({
+        title: 'Entre com sua conta',
+        description: "Para pedir o orçamento você precisa estar logado",
+        status: 'warning',
+        position: 'bottom-left',
+        duration: 9000,
+        isClosable: true,
+      })
+      router.push("/conta/login")
+    } else
+      postData('order', { cart, user }).then(res => console.log(res))
+  }
 
   return (
     <Container
@@ -60,12 +83,18 @@ const MyCart = ({ closeOnClick, user }) => {
             ))}
           </Stack>
           <Flex width="100%" justify="center" py="50px">
-            <Button variant="primary" bgColor="myGreen.100" onClick={() => postData("order", { cart, user }).then(res => console.log(res))}>
+            <Button
+              variant="primary"
+              bgColor="myGreen.100"
+              onClick={handlePedirOrcamento}>
               Pedir Orçamento
             </Button>
           </Flex>
         </>
       }
+      {/* <Button variant="link" color="white" bottom="10px" position="absolute" onClick={clearCart}>
+        Limpar carrinho
+      </Button> */}
     </Container >
   );
 };

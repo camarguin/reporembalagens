@@ -6,14 +6,11 @@ import "swiper/css/navigation";
 import Layout from "../components/Layout";
 import Products from "../components/Products";
 import { getData } from "../utils/fetchData";
-import ProductCard from "../components/ProductCard";
+import { useSession } from "next-auth/client";
 
 export default function Home({ products, result }) {
   const [productsList, setProductsList] = useState(products);
-  // console.log(
-  //   productsList.filter((product) => product.category.includes("descartavel"))
-  // );
-  console.log(products)
+
   return (
     <Layout isLongFooter={false}>
       <Head>
@@ -47,7 +44,6 @@ export default function Home({ products, result }) {
 
 export async function getServerSideProps() {
   const res = await getData("product/homeProducts");
-  console.log(res)
   return {
     props: {
       products: res.products,

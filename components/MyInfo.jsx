@@ -1,8 +1,8 @@
 import { Stack, Text, Button, Flex } from '@chakra-ui/react';
+import { useState } from 'react';
 import { AiFillEye } from 'react-icons/ai';
 
 const MyInfo = ({ user, userId }) => {
-  console.log(user)
   return (
     <Stack
       width={["100%", "100%", "600px"]}
