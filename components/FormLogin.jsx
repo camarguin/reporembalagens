@@ -5,7 +5,6 @@ import {
   Flex, FormControl, FormLabel, FormErrorMessage, Button,
   FormHelperText, Image, Input, useMediaQuery, Box, Text, Stack, useToast,
 } from "@chakra-ui/react"
-import { FcGoogle } from 'react-icons/fc'
 import { signIn } from 'next-auth/client'
 
 // provider={providers.credentials}
@@ -42,7 +41,6 @@ const FormLogin = ({ providers, csrfToken }) => {
         isClosable: true,
       })
     }
-    console.log(status)
     setUserData(initialState)
     setIsLoading(false)
     return router.push('/conta')

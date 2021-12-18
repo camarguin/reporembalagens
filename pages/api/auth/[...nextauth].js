@@ -20,14 +20,12 @@ export default NextAuth({
         const password = credentials.password;
         const user = await Users.findOne({ email })
         if (!user) {
-          // return loginUser({ password, user })
           throw new Error('Usuario nao encontrado')
         }
         const isMatch = await bcrypt.compare(password, user.password)
         if (!isMatch) {
           throw new Error("Senha incorreta");
         }
-        console.log(user)
         return user
       }
     }),
@@ -69,8 +67,6 @@ export default NextAuth({
       const resUser = await Users.findById(user.sub)
       session.userId = user.sub
       session.user = resUser
-      // session.user = resUser
-      console.log(resUser)
       return Promise.resolve(session)
     },
   }

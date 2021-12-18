@@ -15,8 +15,6 @@ const FormSignup = () => {
   const initialState = { email: '', password: '', cfpassword: '' }
   const [userData, setUserData] = useState(initialState)
   const { email, password, cfpassword } = userData
-  // const [email, setEmail] = useState('')
-  // const [password, setPassword] = useState('')
 
   function handleChangeInput(e) {
     const { name, value } = e.target
@@ -43,19 +41,10 @@ const FormSignup = () => {
         email: userData.email,
         password: userData.password,
         cfpassword: userData.cfpassword,
-        // nome: '',
-        // telefone: '',
-        // endereco: {
-        //   rua: '',
-        //   bairro: '',
-        //   complemento: '',
-        //   cep: '',
-        // }
       }),
     }).then(response => {
       console.log(response)
       if (response.status === 400) {
-        console.log('BAD RERQUEST')
         return toast({
           title: 'Erro',
           description: 'Email ja esta sendo usado',
@@ -65,13 +54,16 @@ const FormSignup = () => {
         })
       }
       else {
-        router.push('/conta/perfil')
+        toast({
+          title: 'Conta criada',
+          description: 'Sua conta foi criada com sucesso, por favor entre com sua conta',
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        })
+        router.push('/conta')
       }
     })
-    // const data = await res.json();
-    // console.log(data);
-    // console.log(userData)
-    //Await for data for any desirable next steps
   }
 
   return (
