@@ -7,8 +7,6 @@ import {
 } from "@chakra-ui/react"
 import { signIn } from 'next-auth/client'
 
-// provider={providers.credentials}
-
 const FormLogin = ({ providers, csrfToken }) => {
   const [isSmallerThan800] = useMediaQuery("(max-width: 800px)")
   const toast = useToast()

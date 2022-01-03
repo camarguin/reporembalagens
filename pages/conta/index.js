@@ -1,5 +1,11 @@
-import { Flex } from '@chakra-ui/react'
+import {
+  Flex, Modal, ModalOverlay, ModalContent, ModalHeader,
+  ModalFooter, ModalBody, ModalCloseButton, useDisclosure, Button, Text
+} from '@chakra-ui/react'
+import { WarningTwoIcon } from '@chakra-ui/icons'
 import { getSession } from 'next-auth/client'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 import Layout from '../../components/Layout'
 import MyInfo from '../../components/MyInfo'
 import OrdersHistory from '../../components/OrdersHistory'
@@ -7,12 +13,43 @@ import TitleBanner from '../../components/TitleBanner'
 import { getData } from '../../utils/fetchData'
 
 export default function Conta({ session, orders }) {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [noInfo, setNoInfo] = useState(undefined)
+
+
+  const router = useRouter()
+  useEffect(() => {
+    if (session.user.cpf === '' || session.user.name === '' || session.user.phone === ''
+      || session.user.address.street === '' || session.user.address.district === '' ||
+      session.user.address.complement === '' || session.user.address.cep === ''
+    ) {
+      onOpen()
+      setNoInfo(true)
+    }
+  }, [])
   return (
-    <Layout>
+    <Layout isUserPage>
       <TitleBanner titleIcon="../Profile.svg" titleName="Sua Conta" />
       <Flex justify="space-between" px={["10px", "20px", "50px"]} direction={["column", "column", "row"]}>
-        <MyInfo user={session.user} userId={session.userId} />
+        <MyInfo user={session.user} userId={session.userId} noInfo={noInfo} />
         <OrdersHistory orders={orders} />
+        <Modal isOpen={isOpen}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader alignItems="center"><WarningTwoIcon color="red.600" fontSize="1.5rem" /> Aviso Importante</ModalHeader>
+            {/* <ModalCloseButton /> */}
+            <ModalBody>
+              <Text variant="p" color="black">Os dados da sua conta precisam ser atualizados</Text>
+            </ModalBody>
+
+            <ModalFooter>
+              <Button variant="primary" mr={2} onClick={() => router.push('/conta/perfil')}>
+                Atualizar dados
+              </Button>
+              <Button variant="ghost" onClick={onClose} >Mais tarde</Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
       </Flex>
     </Layout>
   )
@@ -36,13 +73,3 @@ export async function getServerSideProps(context) {
     },
   };
 }
-
-// export async function getServerSideProps(context) {
-//   const res = await getData(`product/aluminio`);
-//   return {
-//     props: {
-//       products: res.products,
-//       result: res.result,
-//     },
-//   };
-// }

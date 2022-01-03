@@ -1,25 +1,86 @@
+import { useState } from 'react';
 import NextLink from 'next/link';
 import {
   Flex, FormControl, FormLabel, FormErrorMessage, Button,
   FormHelperText, Image, Input, useMediaQuery, Box, Text, Stack
 } from "@chakra-ui/react"
 
-const FormProfile = () => {
+const FormProfile = ({ onSubmit, user }) => {
+  const initialState = {
+    name: user.name,
+    phone: user.phone,
+    cpf: user.cpf,
+    street: user.address.street,
+    district: user.address.district,
+    complement: user.address.complement,
+    cep: user.address.street
+  }
+  const [userData, setUserData] = useState(initialState)
+  const { name, phone, cpf, street, district, complement, cep } = userData
+  function handleChangeInput(e) {
+    const { name, value } = e.target
+    setUserData({ ...userData, [name]: value })
+  }
+
+  async function handleSubmit(e) {
+    // console.log(user._id)
+    const userId = user._id
+    const res = await fetch(`/api/user/${userId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: userData.name,
+        phone: userData.phone,
+        cpf: userData.cpf,
+        street: userData.street,
+        district: userData.district,
+        complement: userData.complement,
+        cep: userData.cep,
+      })
+    }).then(response => console.log(response))
+    // const res = await fetch('/api/auth/signup', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({
+    //     email: userData.email,
+    //     password: userData.password,
+    //     cfpassword: userData.cfpassword,
+    //   }),
+    // }).then(response => {
+    //   console.log(response)
+    //   if (response.status === 400) {
+    //     return toast({
+    //       title: 'Erro',
+    //       description: 'Email ja esta sendo usado',
+    //       status: "error",
+    //       duration: 5000,
+    //       isClosable: true,
+    //     })
+    //   }
+  }
+
   return (
     <Flex direction="row" align={["left", "left", "center"]} justify="space-between">
       <Stack justifyContent="center" px={["10px", "20px", "50px"]} width="100%">
         <Text variant="h2">
           Insira seus dados
         </Text>
-        <FormControl>
+        <FormControl id='profile'>
           <Stack spacing={3}>
             <Stack direction={["column", "row"]} spacing={4}>
-              <Input type="text" placeholder="Nome" bgColor="gray.100" width={["100%", "60%"]} />
-              <Input type="text" placeholder="Telefone" bgColor="gray.100" width={["100%", "40%"]} />
+              <Input type="text" id="name" name="name" value={name} onChange={handleChangeInput}
+                placeholder="Nome" bgColor="gray.100" width={["100%", "60%"]} />
+              <Input type="text" id="phone" name="phone" value={phone} onChange={handleChangeInput}
+                placeholder="Telefone" bgColor="gray.100" width={["100%", "40%"]} />
             </Stack>
             <Stack direction={["column", "row"]} spacing={4}>
-              <Input type="text" placeholder="CPF/CNPJ" bgColor="gray.100" width={["100%", "40%"]} />
-              <Input type="email" placeholder="Email" bgColor="gray.100" width={["100%", "60%"]} />
+              <Input type="text" id="cpf" name="cpf" value={cpf} onChange={handleChangeInput}
+                placeholder="CPF/CNPJ" bgColor="gray.100" width={["100%", "40%"]} />
+              {/* <Input type="email" placeholder="Email" bgColor="gray.100" width={["100%", "60%"]} /> */}
             </Stack>
           </Stack>
           <Text variant="h2" py="20px">
@@ -27,16 +88,18 @@ const FormProfile = () => {
           </Text>
           <Stack spacing={3}>
             <Stack direction={["column", "row"]} spacing={4}>
-              <Input type="text" placeholder="Rua / Número" bgColor="gray.100" width={["100%", "60%"]} />
-              <Input type="text" placeholder="Bairro" bgColor="gray.100" width={["100%", "40%"]} />
+              <Input type="text" id="street" name="street" value={street} onChange={handleChangeInput}
+                placeholder="Rua / Número" bgColor="gray.100" width={["100%", "60%"]} />
+              <Input type="text" id="district" name="district" value={district} onChange={handleChangeInput}
+                placeholder="Bairro" bgColor="gray.100" width={["100%", "40%"]} />
             </Stack>
             <Stack direction={["column", "row"]} spacing={4}>
-              <Input type="text" placeholder="Complemento" bgColor="gray.100" width={["100%", "40%"]} />
-              <Input type="text" placeholder="CEP" bgColor="gray.100" width={["100%", "60%"]} />
+              <Input type="text" id="complement" name="complement" value={complement} onChange={handleChangeInput} placeholder="Complemento" bgColor="gray.100" width={["100%", "40%"]} />
+              <Input type="text" id="cep" name="cep" value={cep} onChange={handleChangeInput} placeholder="CEP" bgColor="gray.100" width={["100%", "60%"]} />
             </Stack>
           </Stack>
           <Flex justify="center" py="50px">
-            <Button variant="primary" padding="0px 40px">
+            <Button onClick={handleSubmit} variant="primary" padding="0px 40px">
               Salvar
             </Button>
           </Flex>

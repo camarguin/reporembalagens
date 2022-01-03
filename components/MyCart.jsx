@@ -18,10 +18,6 @@ const MyCart = ({ closeOnClick, user }) => {
     setIsEmpty(cart.length === 0)
   }, [cart])
 
-  function clearCart() {
-    window.localStorage.removeItem("reporembalagens_cart")
-  }
-
   function handlePedirOrcamento() {
     if (!myUser) {
       toast({
@@ -33,8 +29,20 @@ const MyCart = ({ closeOnClick, user }) => {
         isClosable: true,
       })
       router.push("/conta/login")
-    } else
+    }
+    if (myUser.cpf === '' || myUser.address.street === '') {
+      toast({
+        title: 'Atualize seus dados',
+        description: "Para pedir o orçamento você precisa atualizar seus dados no seu perfil",
+        status: 'warning',
+        position: 'bottom-left',
+        duration: 9000,
+        isClosable: true,
+      })
+    } else {
       postData('order', { cart, user }).then(res => console.log(res))
+      localStorage.removeItem("reporembalagens_cart")
+    }
   }
 
   return (
@@ -92,9 +100,6 @@ const MyCart = ({ closeOnClick, user }) => {
           </Flex>
         </>
       }
-      {/* <Button variant="link" color="white" bottom="10px" position="absolute" onClick={clearCart}>
-        Limpar carrinho
-      </Button> */}
     </Container >
   );
 };

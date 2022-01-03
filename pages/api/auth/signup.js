@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt"
 import connectDB from "../../../utils/connectDB"
 import Users from "../../../models/userModel"
+import { signIn } from 'next-auth/client'
 
 connectDB()
 
