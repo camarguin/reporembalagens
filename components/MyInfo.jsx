@@ -1,14 +1,19 @@
+import { useRouter } from 'next/router';
 import { Stack, Text, Button, Flex, Tooltip, Icon } from '@chakra-ui/react';
 import { WarningTwoIcon } from '@chakra-ui/icons'
 import { useEffect, useState } from 'react';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 
 const MyInfo = ({ user, userId, noInfo }) => {
+  const router = useRouter()
   const [hiddenCpf, setHiddenCpf] = useState(true)
   const hiddenCpfCharacters = '***********'
 
   function handleHideCPF() {
     setHiddenCpf(!hiddenCpf)
+  }
+  function handleRedirect(e) {
+    router.push('conta/perfil')
   }
 
   return (
@@ -49,7 +54,7 @@ const MyInfo = ({ user, userId, noInfo }) => {
         <Text><strong>CEP: </strong> {user.address.cep}</Text>
       </Stack>
       <Flex justify="center" bottom="0">
-        <Button variant="primary" maxWidth="130px">
+        <Button variant="primary" maxWidth="130px" onClick={handleRedirect}>
           {noInfo ? 'Atualizar' : 'Alterar'}
         </Button>
       </Flex>

@@ -23,7 +23,6 @@ const FormProfile = ({ onSubmit, user }) => {
   }
 
   async function handleSubmit(e) {
-    // console.log(user._id)
     const userId = user._id
     const res = await fetch(`/api/user/${userId}`, {
       method: 'PATCH',
@@ -40,27 +39,6 @@ const FormProfile = ({ onSubmit, user }) => {
         cep: userData.cep,
       })
     }).then(response => console.log(response))
-    // const res = await fetch('/api/auth/signup', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     email: userData.email,
-    //     password: userData.password,
-    //     cfpassword: userData.cfpassword,
-    //   }),
-    // }).then(response => {
-    //   console.log(response)
-    //   if (response.status === 400) {
-    //     return toast({
-    //       title: 'Erro',
-    //       description: 'Email ja esta sendo usado',
-    //       status: "error",
-    //       duration: 5000,
-    //       isClosable: true,
-    //     })
-    //   }
   }
 
   return (

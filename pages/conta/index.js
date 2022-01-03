@@ -16,7 +16,6 @@ export default function Conta({ session, orders }) {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [noInfo, setNoInfo] = useState(undefined)
 
-
   const router = useRouter()
   useEffect(() => {
     if (session.user.cpf === '' || session.user.name === '' || session.user.phone === ''
