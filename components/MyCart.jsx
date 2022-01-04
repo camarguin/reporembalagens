@@ -28,21 +28,31 @@ const MyCart = ({ closeOnClick, user }) => {
         duration: 9000,
         isClosable: true,
       })
-      router.push("/conta/login")
-    }
-    if (myUser.cpf === '' || myUser.address.street === '') {
-      toast({
-        title: 'Atualize seus dados',
-        description: "Para pedir o orçamento você precisa atualizar seus dados no seu perfil",
-        status: 'warning',
-        position: 'bottom-left',
-        duration: 9000,
-        isClosable: true,
-      })
-    } else {
-      postData('order', { cart, user }).then(res => console.log(res))
-      localStorage.removeItem("reporembalagens_cart")
-    }
+      return router.push("/conta/login")
+    } else
+      if (myUser.cpf === '' && myUser.address.street === '' && myUser.name === '' && myUser.phone) {
+        toast({
+          title: 'Atualize seus dados',
+          description: "Para pedir o orçamento você precisa atualizar seus dados no seu perfil",
+          status: 'warning',
+          position: 'bottom-left',
+          duration: 9000,
+          isClosable: true,
+        })
+      } else {
+        postData('order', { cart, user }).then(res => (
+          toast({
+            title: 'Sua ordem foi salva com sucesso',
+            description: "SALVO",
+            status: 'success',
+            position: 'bottom-left',
+            duration: 9000,
+            isClosable: true,
+
+          }))
+        )
+        localStorage.removeItem("reporembalagens_cart")
+      }
   }
 
   return (

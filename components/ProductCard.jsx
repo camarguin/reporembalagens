@@ -2,15 +2,16 @@ import { useState, useContext } from 'react';
 import {
   Box, Image, Text, VStack, Stack, Button, Container, NumberInput,
   NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper,
-  FormControl, FormLabel, Flex
+  FormControl, FormLabel, Flex, useToast
 } from '@chakra-ui/react';
 import { DataContext } from '../context/GlobalState'
 import { addToCart } from '../context/Actions'
 
 
 const ProductCard = ({ product }) => {
+  const toast = useToast()
   const { state, dispatch } = useContext(DataContext)
-  const { cart } = state
+  const { cart, notify } = state
   const [isHover, setIsHover] = useState(false)
   const [qty, setQty] = useState(1)
 
@@ -19,6 +20,29 @@ const ProductCard = ({ product }) => {
   }
   function out(e) {
     setIsHover(false);
+  }
+
+  function addItem(e) {
+    dispatch(addToCart(product, cart, qty))
+    const check = cart.every(item => {
+      return item._id !== product._id
+    })
+    if (!check) {
+      return toast({
+        title: 'Erro',
+        description: 'Seu carrinho já possui esse produto',
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      })
+    } else
+      return toast({
+        title: 'Sucesso',
+        description: 'Produto adicionado ao carrinho',
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+      })
   }
 
   return (
@@ -68,7 +92,7 @@ const ProductCard = ({ product }) => {
               </NumberInput>
             </Stack>
 
-            <Button type="submit" variant="primary" marginTop="5px" onClick={() => dispatch(addToCart(product, cart, qty))} disabled={product.stock === 0}>
+            <Button type="submit" variant="primary" marginTop="5px" onClick={addItem} disabled={product.stock === 0}>
               Adicionar
             </Button>
             {product.stock === 0 && <Text whiteSpace="nowrap" variant="error">* Sem Estoque</Text>}
