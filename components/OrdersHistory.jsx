@@ -4,11 +4,15 @@ import CardOrder from './CardOrder';
 
 const OrdersHistory = ({ orders }) => {
   const [myOrders, setMyOrders] = useState(orders)
+  const [visible, setVisible] = useState(5)
+
+  function showMore() {
+    setVisible((prevValue) => prevValue + 3)
+  }
   return (
     <Stack
       spacing={4}
       maxWidth={["100%", "100%", "600px"]}
-      height="510px"
       minWidth={["100%", "100%", "600px"]}
     >
       <Text variant="h2" textAlign="center">
@@ -19,16 +23,23 @@ const OrdersHistory = ({ orders }) => {
         <Text>Codigo da Ordem</Text>
         <Text>Data</Text>
       </Grid>
-      <Stack spacing={1} justify="flex-start">
-        {myOrders.map(order => (
+      <Stack spacing={2} justify="flex-start">
+        {myOrders && myOrders.slice(0, visible).map(order => (
           <CardOrder key={order._id} order={order} />
         ))}
+        {myOrders.length === 0 &&
+          <Text align="center">
+            * Voce ainda nao possui nenhum pedido
+          </Text>
+        }
       </Stack>
-      <Flex justify="center">
-        <Button variant="primary" maxWidth="130px">
-          Ver mais
-        </Button>
-      </Flex>
+      {myOrders.length > 0 &&
+        <Flex justify="center">
+          <Button variant="primary" maxWidth="130px" onClick={showMore}>
+            Ver mais
+          </Button>
+        </Flex>
+      }
     </Stack>
   );
 };

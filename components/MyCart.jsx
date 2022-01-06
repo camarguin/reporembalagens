@@ -14,6 +14,7 @@ const MyCart = ({ closeOnClick, user }) => {
   const [myUser, setMyUser] = useState(user)
   const { cart } = state
   const [isEmpty, setIsEmpty] = useState(cart.length === 0)
+
   useEffect(() => {
     setIsEmpty(cart.length === 0)
   }, [cart])
@@ -95,7 +96,6 @@ const MyCart = ({ closeOnClick, user }) => {
             </GridItem>
           </Grid>
           <Stack py="10px" >
-            {/* <CartOrder orderQty="10" orderName="Tradicional Canudo" /> */}
             {cart.map(product => (
               <CartOrder key={product._id} item={product} dispatch={dispatch} cart={cart} />
             ))}

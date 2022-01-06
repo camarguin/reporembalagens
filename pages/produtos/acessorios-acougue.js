@@ -13,7 +13,7 @@ export default function AcessoriosAcougue({ products }) {
 }
 
 export async function getServerSideProps(context) {
-  const res = await getData(`product/descartavel`);
+  const res = await getData(`product/acessoriosacougue`);
   return {
     props: {
       products: res.products,

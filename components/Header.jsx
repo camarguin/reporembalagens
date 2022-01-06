@@ -257,42 +257,42 @@ const Header = ({ isUserPage }) => {
 
             />
           </NextLink>
-          <NextLink href="/descartaveis">
+          <NextLink href="produtos/descartaveis">
             <Button variant="linkMobile" as="a" fontSize="2xl">
               Descartáveis
             </Button>
           </NextLink>
-          <NextLink href="/isopor">
+          <NextLink href="produtos/isopor">
             <Button variant="linkMobile" as="a">
               Isopor
             </Button>
           </NextLink>
-          <NextLink href="/aluminio">
+          <NextLink href="produtos/aluminio">
             <Button variant="linkMobile" as="a">
               Alumínio
             </Button>
           </NextLink>
-          <NextLink href="/papel">
+          <NextLink href="produtos/papel">
             <Button variant="linkMobile" as="a">
               Papel
             </Button>
           </NextLink>
-          <NextLink href="/galvanotek">
+          <NextLink href="produtos/galvanotek">
             <Button variant="linkMobile" as="a">
               Galvanotek
             </Button>
           </NextLink>
-          <NextLink href="/pleion">
+          <NextLink href="produtos/pleion">
             <Button variant="linkMobile" as="a">
               Pleion
             </Button>
           </NextLink>
-          <NextLink href="/plastico">
+          <NextLink href="produtos/plastico">
             <Button variant="linkMobile" as="a">
               Plástico
             </Button>
           </NextLink>
-          <NextLink href="/filmpvc">
+          <NextLink href="produtos/filmpvc">
             <Button variant="linkMobile" as="a">
               Film PVC
             </Button>

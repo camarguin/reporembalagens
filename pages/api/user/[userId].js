@@ -25,6 +25,7 @@ const getUser = async (req, res) => {
     return res.status(500).json({ err: err.message })
   }
 }
+
 const updateUser = async (req, res) => {
   const { userId } = req.query
   const { name, phone, cpf, street, district, complement, cep } = req.body
