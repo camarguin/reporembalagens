@@ -8,7 +8,7 @@ import { getData } from '../../utils/fetchData';
 import { useState } from 'react';
 import OrderInfo from '../../components/OrderInfo';
 
-const pedido = ({ myOrder }) => {
+export default function Pedido({ myOrder }) {
   const router = useRouter()
   const [order, setOrder] = useState(myOrder)
   const { pedido } = router.query
@@ -29,10 +29,7 @@ const pedido = ({ myOrder }) => {
   );
 };
 
-export default pedido;
-
 export async function getServerSideProps(context) {
-  // const router = useRouter()
   const { pedido } = context.query
   const session = await getSession({ req: context.req });
   if (!session) {
