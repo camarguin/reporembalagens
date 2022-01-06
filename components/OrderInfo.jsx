@@ -28,7 +28,7 @@ const OrderInfo = ({ order }) => {
         <Text variant="h2" color="myGreen.200" textAlign="center" fontWeight="900">Quantidade</Text>
       </Grid>
       {order.products.map(product => (
-        <Grid templateColumns="0.9fr 0.3fr" padding="5px 0px">
+        <Grid key={product._id} templateColumns="0.9fr 0.3fr" padding="5px 0px">
           <Text>{product.name}</Text>
           <Text textAlign="center">{product.quantity}</Text>
         </Grid>
