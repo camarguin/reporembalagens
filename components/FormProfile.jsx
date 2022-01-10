@@ -1,11 +1,15 @@
 import { useState } from 'react';
 import NextLink from 'next/link';
+import { useRouter } from 'next/router';
 import {
   Flex, FormControl, FormLabel, FormErrorMessage, Button,
-  FormHelperText, Image, Input, useMediaQuery, Box, Text, Stack
+  FormHelperText, Image, Input, useMediaQuery, Box, Text, Stack, useToast
 } from "@chakra-ui/react"
 
+
 const FormProfile = ({ onSubmit, user }) => {
+  const toast = useToast()
+  const router = useRouter()
   const initialState = {
     name: user.name,
     phone: user.phone,
@@ -38,7 +42,16 @@ const FormProfile = ({ onSubmit, user }) => {
         complement: userData.complement,
         cep: userData.cep,
       })
-    }).then(response => console.log(response))
+    }).then(response => (
+      toast({
+        title: 'Conta atualizada',
+        description: 'Suas informações foram salvas com sucesso',
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+      })
+    ))
+    router.push('/conta')
   }
 
   return (

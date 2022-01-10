@@ -6,6 +6,7 @@ import { WarningTwoIcon } from '@chakra-ui/icons'
 import { getSession } from 'next-auth/client'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import { compareAsc, compareDesc, parseISO } from 'date-fns'
 import Layout from '../../components/Layout'
 import MyInfo from '../../components/MyInfo'
 import OrdersHistory from '../../components/OrdersHistory'
@@ -13,10 +14,16 @@ import TitleBanner from '../../components/TitleBanner'
 import { getData } from '../../utils/fetchData'
 
 export default function Conta({ session, orders }) {
+  const router = useRouter()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [noInfo, setNoInfo] = useState(undefined)
 
-  const router = useRouter()
+  function sortOrders(myOrders) {
+    return myOrders.sort((a, b) =>
+      compareDesc(parseISO(a.createdAt), parseISO(b.createdAt))
+    )
+  }
+
   useEffect(() => {
     if (session.user.cpf === '' || session.user.name === '' || session.user.phone === ''
       || session.user.address.street === '' || session.user.address.district === '' ||
@@ -31,7 +38,7 @@ export default function Conta({ session, orders }) {
       <TitleBanner titleIcon="../Profile.svg" titleName="Sua Conta" />
       <Flex justify="space-between" px={["10px", "20px", "50px"]} direction={["column", "column", "row"]}>
         <MyInfo user={session.user} userId={session.userId} noInfo={noInfo} />
-        <OrdersHistory orders={orders} />
+        <OrdersHistory orders={sortOrders(orders)} />
         <Modal isOpen={isOpen}>
           <ModalOverlay />
           <ModalContent>

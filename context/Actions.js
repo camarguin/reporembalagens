@@ -6,6 +6,7 @@ export const ACTIONS = {
   ADD_ORDERS: 'ADD_ORDERS',
   ADD_USERS: 'ADD_USERS',
   ADD_CATEGORIES: 'ADD_CATEGORIES',
+  CLEAR: 'CLEAR'
 }
 
 export const addToCart = (product, cart, qty) => {
@@ -49,4 +50,9 @@ export const deleteItem = (data, id, type) => {
 export const updateItem = (data, id, post, type) => {
   const newData = data.map(item => (item._id === id ? post : item))
   return ({ type, payload: newData })
+}
+
+export const clearCart = () => {
+  const newData = []
+  return ({ type: 'CLEAR', payload: newData })
 }

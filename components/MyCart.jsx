@@ -1,11 +1,12 @@
 import { useState, useContext, useEffect } from 'react';
 import { useRouter } from 'next/router'
-import { Container, Text, Stack, IconButton, Grid, GridItem, Button, Flex, useToast } from '@chakra-ui/react';
+import { Container, Text, Stack, IconButton, Grid, GridItem, Button, Flex, useToast, Link } from '@chakra-ui/react';
 import { AiOutlineClose } from 'react-icons/ai';
 import CartOrder from './CartOrder';
 import EmptyCart from './EmptyCart';
 import { DataContext } from '../context/GlobalState';
 import { postData } from '../utils/fetchData';
+import { clearCart } from '../context/Actions';
 
 const MyCart = ({ closeOnClick, user }) => {
   const router = useRouter()
@@ -19,7 +20,13 @@ const MyCart = ({ closeOnClick, user }) => {
     setIsEmpty(cart.length === 0)
   }, [cart])
 
-  function handlePedirOrcamento() {
+  async function handlePedirOrcamento() {
+    // const autoMessageOrder = `
+    // Pedido: 
+    // ${cart.map(product => ` ${product.name} - ${product.quantity}\n `)} 
+    // Nome: ${myUser.name}
+    // `
+    // console.log(autoMessageOrder)
     if (!myUser) {
       toast({
         title: 'Entre com sua conta',
@@ -31,7 +38,7 @@ const MyCart = ({ closeOnClick, user }) => {
       })
       return router.push("/conta/login")
     } else
-      if (myUser.cpf === '' && myUser.address.street === '' && myUser.name === '' && myUser.phone) {
+      if (myUser.cpf === '' && myUser.address.street === '' && myUser.name === '' && myUser.phone && myUser.address.district === '') {
         toast({
           title: 'Atualize seus dados',
           description: "Para pedir o orçamento você precisa atualizar seus dados no seu perfil",
@@ -41,18 +48,28 @@ const MyCart = ({ closeOnClick, user }) => {
           isClosable: true,
         })
       } else {
-        postData('order', { cart, user }).then(res => (
+        postData('order', { cart, user }).then(res => {
           toast({
-            title: 'Sua ordem foi salva com sucesso',
-            description: "SALVO",
+            title: 'Pedido salvo',
+            description: "Seu pedido foi salva com sucesso, voce ser redirecionado para o whatsapp da reporembalagens",
             status: 'success',
-            position: 'bottom-left',
             duration: 9000,
             isClosable: true,
-
-          }))
+          })
+          const autoMessageOrder = `
+            ID do Pedido: ${res.newOrder._id}
+            Nome: ${myUser.name}
+            Pedido: 
+            ${cart.map(product => ` ${product.name} - ${product.quantity}\n `)} 
+            `
+          // console.log(autoMessageOrder)
+          window.open(`https://api.whatsapp.com/send?phone=5534997673100&text=${encodeURI(autoMessageOrder)}`, "_blank")
+        }
         )
-        localStorage.removeItem("reporembalagens_cart")
+        dispatch(clearCart())
+        closeOnClick()
+        //     // window.location.reload(false);
+        // window.open(`https://api.whatsapp.com/send?phone=5534997673100&text=${encodeURI(autoMessageOrder)}`, "_blank")
       }
   }
 
@@ -95,7 +112,7 @@ const MyCart = ({ closeOnClick, user }) => {
               <Text fontWeight="500" color="white">Remover</Text>
             </GridItem>
           </Grid>
-          <Stack py="10px" >
+          <Stack py="10px" maxHeight="60vh" overflowY="auto" >
             {cart.map(product => (
               <CartOrder key={product._id} item={product} dispatch={dispatch} cart={cart} />
             ))}

@@ -10,7 +10,6 @@ const OrderInfo = ({ order }) => {
   const date = moment(order.createdAt).format('DD/MM/YYYY');
   return (
     <Container>
-
       <Text variant="h1" color="myGreen.300" textAlign="center">
         Informações do Pedido
       </Text>

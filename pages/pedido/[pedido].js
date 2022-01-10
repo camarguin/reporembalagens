@@ -7,6 +7,7 @@ import Layout from '../../components/Layout';
 import { getData } from '../../utils/fetchData';
 import { useState } from 'react';
 import OrderInfo from '../../components/OrderInfo';
+import TitleBanner from '../../components/TitleBanner';
 
 export default function Pedido({ myOrder }) {
   const router = useRouter()
@@ -14,6 +15,7 @@ export default function Pedido({ myOrder }) {
   const { pedido } = router.query
   return (
     <Layout isUserPage>
+      <TitleBanner titleName="Pedido" titleIcon="/OrderIcon.svg" />
       <Button
         variant="ghost"
         fontSize="2.8rem"

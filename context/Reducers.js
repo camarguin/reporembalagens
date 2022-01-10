@@ -38,6 +38,11 @@ const reducers = (state, action) => {
         ...state,
         categories: action.payload
       };
+    case ACTIONS.CLEAR:
+      return {
+        ...state,
+        cart: action.payload
+      };
     default:
       return state;
   }

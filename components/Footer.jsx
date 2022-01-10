@@ -1,5 +1,7 @@
-import { Container, Image, Text, Stack, Box } from '@chakra-ui/react';
+import { Container, Image, Text, Stack, Box, Link } from '@chakra-ui/react';
 import { AiOutlineInstagram, AiOutlineWhatsApp } from 'react-icons/ai';
+
+const AUTOMESSAGEWHATSAPP = 'Olá, gostaria de ...'
 
 const Footer = () => {
   return (
@@ -42,8 +44,12 @@ const Footer = () => {
         <Box>
           <Text fontSize={["1rem", "0.9rem", "1rem"]} fontWeight="extrabold">Entre em Contato</Text>
           <Stack direction="row" fontSize={["2rem", "1.8rem", "2.7rem"]} justify="center">
-            <AiOutlineInstagram />
-            <AiOutlineWhatsApp />
+            <Link href='https://www.instagram.com/reporembalagens/' isExternal>
+              <AiOutlineInstagram />
+            </Link>
+            <Link href={`https://api.whatsapp.com/send?phone=5534997673100&text=${encodeURI(AUTOMESSAGEWHATSAPP)}`} isExternal>
+              <AiOutlineWhatsApp />
+            </Link>
           </Stack>
         </Box>
       </Stack>
