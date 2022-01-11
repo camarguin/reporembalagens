@@ -1,10 +1,10 @@
 import NextAuth from "next-auth"
 import Providers from "next-auth/providers"
 import nodemailer from "nodemailer"
-import connectDB from "../../../utils/connectDB"
-import Users from "../../../models/userModel"
-import { html, text } from '../../../utils/htmlEmail'
 import bcrypt from 'bcrypt'
+import connectDB from "../../../utils/connectDB"
+import { html, text } from '../../../utils/htmlEmail'
+import Users from "../../../models/userModel"
 
 connectDB()
 

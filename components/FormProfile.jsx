@@ -1,11 +1,7 @@
 import { useState } from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import {
-  Flex, FormControl, FormLabel, FormErrorMessage, Button,
-  FormHelperText, Image, Input, useMediaQuery, Box, Text, Stack, useToast
-} from "@chakra-ui/react"
-
+import { Flex, FormControl, Button, Input, Text, Stack, useToast } from "@chakra-ui/react"
 
 const FormProfile = ({ onSubmit, user }) => {
   const toast = useToast()

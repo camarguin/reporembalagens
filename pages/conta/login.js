@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { getProviders, getSession, csrfToken } from 'next-auth/client'
-import { useRouter } from 'next/router'
-import { Spinner, Flex } from "@chakra-ui/react"
 import FormLogin from '../../components/FormLogin'
 import Layout from '../../components/Layout'
 import TitleBanner from '../../components/TitleBanner'

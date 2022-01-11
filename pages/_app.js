@@ -5,8 +5,6 @@ import 'swiper/css';
 import '../styles/swiper.css';
 import { DataProvider } from "../context/GlobalState";
 
-
-
 function MyApp({ Component, pageProps }) {
   return (
     <Provider>

@@ -1,13 +1,12 @@
-import React, { useEffect } from 'react';
-import router, { useRouter } from 'next/router';
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import { getSession } from 'next-auth/client';
-import { Text, IconButton, Button } from '@chakra-ui/react';
+import { Button } from '@chakra-ui/react';
 import { ArrowBackIcon } from '@chakra-ui/icons'
 import Layout from '../../components/Layout';
-import { getData } from '../../utils/fetchData';
-import { useState } from 'react';
 import OrderInfo from '../../components/OrderInfo';
 import TitleBanner from '../../components/TitleBanner';
+import { getData } from '../../utils/fetchData';
 
 export default function Pedido({ myOrder }) {
   const router = useRouter()

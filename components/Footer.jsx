@@ -38,7 +38,7 @@ const Footer = () => {
           <Text fontSize={["1rem", "0.9rem", "1rem"]} fontWeight="extrabold">Nosso Telefone</Text>
           <Text fontSize={["1rem", "0.7rem", "1rem"]}>
             (34) 99767-3100 <br />
-            (34) 99209-6772
+            (34) 3229-3100
           </Text>
         </Box>
         <Box>

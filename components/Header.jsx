@@ -3,7 +3,7 @@ import Image from 'next/image';
 import NextLink from 'next/link';
 import {
   Flex, Button, IconButton, Grid, HStack, VStack, useMediaQuery, useDisclosure, Accordion,
-  AccordionItem, AccordionButton, AccordionPanel, AccordionIcon, Text
+  AccordionItem, AccordionButton, AccordionPanel, Text
 } from '@chakra-ui/react';
 import { BiUserCircle, BiMenu } from 'react-icons/bi';
 import { AiOutlineShoppingCart, AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
@@ -18,10 +18,8 @@ const Header = ({ isUserPage }) => {
   const { isOpen, onToggle } = useDisclosure()
   const [isCartOpen, setIsCartOpen] = useState(false)
   const [session, loading] = useSession()
-  const { state, dispact } = useContext(DataContext)
+  const { state, dispatch } = useContext(DataContext)
   const { cart } = state
-
-  console.log(cart)
 
   function openCart(e) {
     setIsCartOpen(!isCartOpen)
@@ -29,12 +27,10 @@ const Header = ({ isUserPage }) => {
   function closeCart(e) {
     setIsCartOpen(false)
   }
-  // console.log(session)
 
   return (
     <Flex direction="column" bgColor={["myGreen.300", "myGreen.300", "white"]} py={["2", "1", "0"]} px={["10px", "20px", "50px"]}>
       <Flex w="100%" justify="space-between" align="center" h={["50px", "60px", "80px"]} >
-
         <IconButton
           aria-label="Seu carrinho"
           variant="link"
@@ -77,7 +73,6 @@ const Header = ({ isUserPage }) => {
           />
           <span style={{
             position: 'absolute',
-            // padding: '0px 4px',
             justifyContent: 'center',
             alignItems: 'center',
             display: 'flex',

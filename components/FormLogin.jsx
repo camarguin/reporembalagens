@@ -1,19 +1,18 @@
 import { useState } from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import {
-  Flex, FormControl, FormLabel, FormErrorMessage, Button,
-  FormHelperText, Image, Input, useMediaQuery, Box, Text, Stack, useToast,
-} from "@chakra-ui/react"
 import { signIn } from 'next-auth/client'
+import {
+  Flex, FormControl, Button, FormHelperText, Image, Input, useMediaQuery, Box, Text, Stack, useToast,
+} from "@chakra-ui/react"
 
 const FormLogin = ({ providers, csrfToken }) => {
-  const [isSmallerThan800] = useMediaQuery("(max-width: 800px)")
   const toast = useToast()
+  const router = useRouter()
+  const [isSmallerThan800] = useMediaQuery("(max-width: 800px)")
   const initialState = { email: '', password: '' }
   const [userData, setUserData] = useState(initialState)
   const { email, password } = userData
-  const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
 
   function handleChangeInput(e) {

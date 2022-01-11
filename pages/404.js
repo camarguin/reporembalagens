@@ -22,7 +22,6 @@ export default function Custom404() {
             Voltar para página inicial
           </Button>
         </Link>
-
       </Container>
     </>
   )

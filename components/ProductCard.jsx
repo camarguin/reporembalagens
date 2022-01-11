@@ -1,8 +1,8 @@
 import { useState, useContext } from 'react';
 import {
-  Box, Image, Text, VStack, Stack, Button, Container, NumberInput,
+  Box, Image, Text, VStack, Stack, Button, NumberInput,
   NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper,
-  FormControl, FormLabel, Flex, useToast
+  FormControl, useToast
 } from '@chakra-ui/react';
 import { DataContext } from '../context/GlobalState'
 import { addToCart } from '../context/Actions'

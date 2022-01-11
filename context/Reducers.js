@@ -1,6 +1,5 @@
 import { ACTIONS } from './Actions'
 
-
 const reducers = (state, action) => {
   switch (action.type) {
     case ACTIONS.NOTIFY:

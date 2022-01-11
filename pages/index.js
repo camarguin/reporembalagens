@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 import Head from "next/head";
 import { Text, Container, Stack } from "@chakra-ui/react";
 import "swiper/css";
@@ -6,7 +7,6 @@ import "swiper/css/navigation";
 import Layout from "../components/Layout";
 import Products from "../components/Products";
 import { getData } from "../utils/fetchData";
-import { useSession } from "next-auth/client";
 
 export default function Home({ products, result }) {
   const [productsList, setProductsList] = useState(products);
@@ -26,15 +26,25 @@ export default function Home({ products, result }) {
       </Text>
       <Container w="95%" maxW maxWidth="1920px">
         <Stack direction="column" spacing="2">
-          <Text variant="h2">Descartáveis</Text>
+          <Link href="/produtos/descartaveis">
+            <Text variant="h2">Descartáveis</Text>
+          </Link>
           <Products myProducts={productsList.filter((product) => product.category.includes("descartavel"))} />
-          <Text variant="h2">Isopor</Text>
+          <Link href="/produtos/isopor">
+            <Text variant="h2">Isopor</Text>
+          </Link>
           <Products myProducts={productsList.filter((product) => product.category.includes("isopor"))} />
-          <Text variant="h2">Alumínio</Text>
+          <Link href="/produtos/aluminio">
+            <Text variant="h2">Alumínio</Text>
+          </Link>
           <Products myProducts={productsList.filter((product) => product.category.includes("aluminio"))} />
-          <Text variant="h2">Papel</Text>
+          <Link href="/produtos/papel">
+            <Text variant="h2">Papel</Text>
+          </Link>
           <Products myProducts={productsList.filter((product) => product.category.includes("papel"))} />
-          <Text variant="h2">Sacolas</Text>
+          <Link href="/produtos/sacolas">
+            <Text variant="h2">Sacolas</Text>
+          </Link>
           <Products myProducts={productsList.filter((product) => product.category.includes("sacola"))} />
         </Stack>
       </Container>

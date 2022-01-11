@@ -1,7 +1,7 @@
+import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { Stack, Text, Button, Flex, Tooltip, Icon } from '@chakra-ui/react';
+import { Stack, Text, Button, Flex, Tooltip } from '@chakra-ui/react';
 import { WarningTwoIcon } from '@chakra-ui/icons'
-import { useEffect, useState } from 'react';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 
 const MyInfo = ({ user, userId, noInfo }) => {

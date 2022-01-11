@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from 'react';
 import { useRouter } from 'next/router'
-import { Container, Text, Stack, IconButton, Grid, GridItem, Button, Flex, useToast, Link } from '@chakra-ui/react';
+import { Container, Text, Stack, IconButton, Grid, GridItem, Button, Flex, useToast } from '@chakra-ui/react';
 import { AiOutlineClose } from 'react-icons/ai';
 import CartOrder from './CartOrder';
 import EmptyCart from './EmptyCart';
@@ -21,12 +21,6 @@ const MyCart = ({ closeOnClick, user }) => {
   }, [cart])
 
   async function handlePedirOrcamento() {
-    // const autoMessageOrder = `
-    // Pedido: 
-    // ${cart.map(product => ` ${product.name} - ${product.quantity}\n `)} 
-    // Nome: ${myUser.name}
-    // `
-    // console.log(autoMessageOrder)
     if (!myUser) {
       toast({
         title: 'Entre com sua conta',
@@ -62,14 +56,11 @@ const MyCart = ({ closeOnClick, user }) => {
             Pedido: 
             ${cart.map(product => ` ${product.name} - ${product.quantity}\n `)} 
             `
-          // console.log(autoMessageOrder)
           window.open(`https://api.whatsapp.com/send?phone=5534997673100&text=${encodeURI(autoMessageOrder)}`, "_blank")
         }
         )
         dispatch(clearCart())
         closeOnClick()
-        //     // window.location.reload(false);
-        // window.open(`https://api.whatsapp.com/send?phone=5534997673100&text=${encodeURI(autoMessageOrder)}`, "_blank")
       }
   }
 

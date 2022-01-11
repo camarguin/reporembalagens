@@ -1,17 +1,13 @@
+import { useState } from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
-import {
-  Flex, FormControl, FormErrorMessage, Button,
-  Image, Input, useMediaQuery, Box, Text, Stack, useToast
-} from "@chakra-ui/react"
+import { Flex, FormControl, Button, Image, Input, useMediaQuery, Box, Text, Stack, useToast } from "@chakra-ui/react"
 import valid from '../utils/valid'
 
 const FormSignup = () => {
-  const [isSmallerThan800] = useMediaQuery("(max-width: 800px)")
   const toast = useToast()
   const router = useRouter()
-
+  const [isSmallerThan800] = useMediaQuery("(max-width: 800px)")
   const initialState = { email: '', password: '', cfpassword: '' }
   const [userData, setUserData] = useState(initialState)
   const { email, password, cfpassword } = userData
@@ -43,7 +39,7 @@ const FormSignup = () => {
         cfpassword: userData.cfpassword,
       }),
     }).then(response => {
-      console.log(response)
+      // console.log(response)
       if (response.status === 400) {
         return toast({
           title: 'Erro',

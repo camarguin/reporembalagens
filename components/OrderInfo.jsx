@@ -1,13 +1,10 @@
 import React from 'react';
-import { useRouter } from 'next/router'
-import { Container, Grid, IconButton, Text } from '@chakra-ui/react';
-import { ArrowBackIcon } from '@chakra-ui/icons'
+import { Container, Grid, Text } from '@chakra-ui/react';
 import moment from 'moment';
 
-
 const OrderInfo = ({ order }) => {
-
   const date = moment(order.createdAt).format('DD/MM/YYYY');
+
   return (
     <Container>
       <Text variant="h1" color="myGreen.300" textAlign="center">

@@ -5,14 +5,13 @@ import Layout from '../../components/Layout'
 import TitleBanner from '../../components/TitleBanner'
 
 export default function Perfil({ user }) {
-  console.log(user)
-  const handleSubmit = () => {
-    console.log(user)
-  }
+  // const handleSubmit = () => {
+  //   console.log(user)
+  // }
   return (
     <Layout isShortFooter isUserPage>
       <TitleBanner titleIcon="../Profile.svg" titleName="Seu Perfil" />
-      <FormProfile onSubmit={() => console.log(user)} user={user} />
+      <FormProfile user={user} />
     </Layout>
   )
 }

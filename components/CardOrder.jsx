@@ -6,7 +6,6 @@ import moment from 'moment';
 const CardOrder = ({ order }) => {
   const date = moment(order.createdAt).format('DD/MM/YYYY');
 
-
   return (
     <Link href={`pedido/${order._id}`}>
       <Grid

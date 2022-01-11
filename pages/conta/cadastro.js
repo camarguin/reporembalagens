@@ -1,11 +1,10 @@
 import React from 'react'
+import { getProviders, getSession, signOut } from 'next-auth/client'
 import FormSignup from '../../components/FormSignup'
 import Layout from '../../components/Layout'
 import TitleBanner from '../../components/TitleBanner'
-import { getProviders, getSession, signOut } from 'next-auth/client'
 
 export default function Cadastro({ providers, session }) {
-  if (session) return <button onClick={() => signOut()}>Logout from {session.user.name}</button>
 
   return (
     <Layout isUserPage isShortFooter>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -10,7 +10,6 @@ const Products = ({ myProducts }) => {
   const swiperItems = myProducts.map(product => {
     return (
       <SwiperSlide key={product._id}>
-        {/* <ProductCard productImg={product.image} productNome={product.nome} productDescricao={product.descricao} productCod={"COD " + product.cod} /> */}
         <ProductCard product={product} />
       </SwiperSlide>
     )
@@ -39,8 +38,6 @@ const Products = ({ myProducts }) => {
           "spaceBetween": 50
         }
       }}
-    // onSwiper={(swiper) => console.log(swiper)}
-    // onSlideChange={() => console.log('slide change')}
     >
       {swiperItems}
     </Swiper >
