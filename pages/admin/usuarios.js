@@ -7,7 +7,7 @@ import TitleBanner from '../../components/TitleBanner';
 import AdminLayout from '../../components/AdminLayout';
 import AdminTitleBanner from '../../components/AdminTitleBanner';
 
-export default function usuarios({ users }) {
+export default function Usuarios({ users }) {
   const columns = React.useMemo(
     () => [
       {

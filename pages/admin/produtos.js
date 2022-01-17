@@ -6,7 +6,7 @@ import AdminTitleBanner from '../../components/AdminTitleBanner';
 import AdminLayout from '../../components/AdminLayout';
 import MyTable from '../../components/MyTable';
 
-export default function produtos({ products }) {
+export default function Produtos({ products }) {
   const columns = React.useMemo(
     () => [
       {

@@ -3,7 +3,7 @@ import { getSession } from 'next-auth/client';
 import AdminLayout from '../../components/AdminLayout'
 import { Text } from '@chakra-ui/react';
 
-export default function index({ session }) {
+export default function Index({ session }) {
   return (
     <AdminLayout isShortFooter>
       {/* <AdminHeader /> */}

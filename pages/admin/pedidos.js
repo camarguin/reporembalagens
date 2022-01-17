@@ -14,7 +14,7 @@ function sortOrders(myOrders) {
   )
 }
 
-export default function pedidos({ orders }) {
+export default function Pedidos({ orders }) {
   const columns = React.useMemo(
     () => [
       {
