@@ -60,7 +60,26 @@ const MyTable = ({ columns, data }) => {
     <>
       <Table {...getTableProps()}>
         <Thead>
-          {headerGroups.map((headerGroup) => (
+          {headerGroups.map((headerGroup) => {
+            const { key, ...restHeaderGroupProps } =
+              headerGroup.getHeaderGroupProps();
+            return (
+              <Tr key={key} {...restHeaderGroupProps}>
+                {headerGroup.headers.map((column) => {
+                  const { key, ...restColumn } = column.getHeaderProps();
+                  return (
+                    <Th key={key} {...restColumn}>
+                      {column.render("Header")}
+                      <span>{column.isSorted ? (column.isSortedDesc ? ' ▼' : ' ▲') : ''}</span>
+                    </Th>
+                  );
+                })}
+              </Tr>
+            );
+          })}
+          {/* {headerGroups.map((headerGroup) => {
+            const { key, ...restHeaderGroupProps } =
+              headerGroup.getHeaderGroupProps();
             <Tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
                 <Th {...column.getHeaderProps(column.getSortByToggleProps())}>
@@ -69,10 +88,26 @@ const MyTable = ({ columns, data }) => {
                 </Th>
               ))}
             </Tr>
-          ))}
+          )}} */}
         </Thead>
         <Tbody {...getTableBodyProps()}>
-          {page.map((row, i) => {
+          {page.map((row) => {
+            prepareRow(row);
+            const { key, ...restRowProps } = row.getRowProps();
+            return (
+              <Tr key={key} {...restRowProps}>
+                {row.cells.map((cell) => {
+                  const { key, ...restCellProps } = cell.getCellProps();
+                  return (
+                    <Td key={key} {...restCellProps}>
+                      {cell.render("Cell")}
+                    </Td>
+                  );
+                })}
+              </Tr>
+            );
+          })}
+          {/* {page.map((row, i) => {
             prepareRow(row);
             return (
               <Tr {...row.getRowProps()}>
@@ -83,7 +118,7 @@ const MyTable = ({ columns, data }) => {
                 })}
               </Tr>
             );
-          })}
+          })} */}
         </Tbody>
       </Table>
 
