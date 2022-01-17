@@ -1,8 +1,8 @@
 import { Container, Text, Flex, Image, Box } from '@chakra-ui/react'
 
-const TitleBanner = ({ titleName, titleIcon }) => {
+const AdminTitleBanner = ({ titleIcon, titleName }) => {
   return (
-    <Container maxWidth bgColor="myGreen.300" px={["10px", "20px", "50px"]} py={["0", "0", "4"]} marginBottom="30px">
+    <Container maxWidth bgColor="myGreen.300" px={["10px", "20px", "50px"]} py={["0", "0", "1"]} marginBottom="20px">
       <Flex direction="row" align="center">
         <Image src={titleIcon} alt="Categoria Icone" boxSize={["45px", "70px", "90px"]} />
         <Box w="100%" textAlign={["center", "center", "left"]}>
@@ -15,4 +15,4 @@ const TitleBanner = ({ titleName, titleIcon }) => {
   );
 };
 
-export default TitleBanner;
+export default AdminTitleBanner;

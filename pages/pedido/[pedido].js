@@ -14,12 +14,13 @@ export default function Pedido({ myOrder }) {
   const { pedido } = router.query
   return (
     <Layout isUserPage>
-      <TitleBanner titleName="Pedido" titleIcon="/OrderIcon.svg" />
+      <TitleBanner titleName="Informações do Pedido" titleIcon="/OrderIcon.svg" />
       <Button
         variant="ghost"
-        fontSize="2.8rem"
+        fontSize="2.5rem"
         color="myGreen.300"
         marginLeft="50px"
+        padding="0"
         cursor="pointer"
         onClick={() => router.back()}
       >

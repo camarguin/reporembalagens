@@ -7,9 +7,6 @@ const OrderInfo = ({ order }) => {
 
   return (
     <Container>
-      <Text variant="h1" color="myGreen.300" textAlign="center">
-        Informações do Pedido
-      </Text>
       <Text variant='h2' color="black"><strong style={{ color: "#6DAA92" }}>ID do Pedido: </strong> {order._id}</Text>
       <Text variant='h2' color={order.paid ? 'green.300' : 'red.300'}>
         <strong style={{ color: "#6DAA92" }}>Pago: </strong>

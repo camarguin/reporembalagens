@@ -13,7 +13,7 @@ const FormProfile = ({ onSubmit, user }) => {
     street: user.address.street,
     district: user.address.district,
     complement: user.address.complement,
-    cep: user.address.street
+    cep: user.address.cep
   }
   const [userData, setUserData] = useState(initialState)
   const { name, phone, cpf, street, district, complement, cep } = userData

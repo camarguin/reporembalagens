@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import Image from 'next/image';
 import NextLink from 'next/link';
+import { useRouter } from "next/router";
 import {
   Flex, Button, IconButton, Grid, HStack, VStack, useMediaQuery, useDisclosure, Accordion,
   AccordionItem, AccordionButton, AccordionPanel, Text
@@ -15,6 +16,7 @@ import { DataContext } from "../context/GlobalState";
 
 const Header = ({ isUserPage }) => {
   const [isSmallerThan1024] = useMediaQuery("(max-width: 1023px)")
+  const router = useRouter()
   const { isOpen, onToggle } = useDisclosure()
   const [isCartOpen, setIsCartOpen] = useState(false)
   const [session, loading] = useSession()
@@ -47,6 +49,11 @@ const Header = ({ isUserPage }) => {
           </NextLink>
         </Flex>
         <Flex display={["none", "none", "flex"]}>
+          {session?.user.type === 'admin' &&
+            <Button variant="primary" margin="0px 10px" padding="5px 30px" onClick={() => router.push('/admin')}>
+              Administrador
+            </Button>
+          }
           {session &&
             <Button variant="primary" margin="0px 10px" padding="5px 30px" onClick={() => signOut()}>
               Sair
