@@ -29,7 +29,7 @@ export default function Produtos({ products }) {
         Header: "Imagem",
         accessor: "image",
         // Cell: ({ value }) => { return <Image src={value} height="50px" /> }
-        Cell: ({ value }) => { return <a href={value} target="_blank">{value}</a> }
+        Cell: ({ value }) => { return <a href={value} target="_blank" rel="noreferrer">{value}</a> }
       }
     ],
     []
