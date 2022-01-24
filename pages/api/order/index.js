@@ -18,7 +18,8 @@ const createOrder = async (req, res) => {
   try {
     const { cart, user } = req.body
     const newOrder = new Orders({
-      user: user._id,
+      userId: user._id,
+      userName: user.name,
       products: cart
     })
     // return res.json({ newOrder })

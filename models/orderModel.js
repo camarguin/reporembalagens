@@ -4,9 +4,12 @@ const orderSchema = new mongoose.Schema({
   products: {
     type: Array,
   },
-  user: {
+  userId: {
     type: String,
     required: true
+  },
+  userName: {
+    type: String,
   },
   paid: {
     type: Boolean,
