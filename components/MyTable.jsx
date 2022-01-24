@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import {
   Table, Thead, Tbody, Tr, Th, Td, Flex, IconButton, Text, Tooltip, Select, NumberInput,
-  NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper
+  NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, Container
 } from "@chakra-ui/react";
-import { useTable, usePagination, useSortBy } from "react-table";
+import { useTable, usePagination, useSortBy, useGlobalFilter } from "react-table";
 import { ArrowRightIcon, ArrowLeftIcon, ChevronRightIcon, ChevronLeftIcon } from "@chakra-ui/icons";
+import GlobalFilter from './GlobalFilter';
 
 const EditableCell = ({
   value: initialValue,
@@ -43,7 +44,8 @@ const MyTable = ({ columns, data }) => {
     nextPage,
     previousPage,
     setPageSize,
-    state: { pageIndex, pageSize }
+    state: { pageIndex, pageSize, globalFilter },
+    setGlobalFilter,
   } = useTable(
     {
       columns,
@@ -51,13 +53,17 @@ const MyTable = ({ columns, data }) => {
       initialState: { pageIndex: 0 },
       // updateMyData
     },
+    useGlobalFilter,
     useSortBy,
     usePagination
   );
 
+  // const { globalFilter } = state
+
   // Render the UI for your table
   return (
-    <>
+    <Container padding="0px 20px" maxW>
+      <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
       <Table {...getTableProps()}>
         <Thead>
           {headerGroups.map((headerGroup) => {
@@ -66,7 +72,7 @@ const MyTable = ({ columns, data }) => {
             return (
               <Tr key={key} {...restHeaderGroupProps}>
                 {headerGroup.headers.map((column) => {
-                  const { key, ...restColumn } = column.getHeaderProps();
+                  const { key, ...restColumn } = column.getHeaderProps(column.getSortByToggleProps());
                   return (
                     <Th key={key} {...restColumn}>
                       {column.render("Header")}
@@ -77,18 +83,6 @@ const MyTable = ({ columns, data }) => {
               </Tr>
             );
           })}
-          {/* {headerGroups.map((headerGroup) => {
-            const { key, ...restHeaderGroupProps } =
-              headerGroup.getHeaderGroupProps();
-            <Tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <Th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                  {column.render("Header")}
-                  <span>{column.isSorted ? (column.isSortedDesc ? ' ▼' : ' ▲') : ''}</span>
-                </Th>
-              ))}
-            </Tr>
-          )}} */}
         </Thead>
         <Tbody {...getTableBodyProps()}>
           {page.map((row) => {
@@ -107,18 +101,6 @@ const MyTable = ({ columns, data }) => {
               </Tr>
             );
           })}
-          {/* {page.map((row, i) => {
-            prepareRow(row);
-            return (
-              <Tr {...row.getRowProps()}>
-                {row.cells.map((cell) => {
-                  return (
-                    <Td {...cell.getCellProps()}>{cell.render("Cell")}</Td>
-                  );
-                })}
-              </Tr>
-            );
-          })} */}
         </Tbody>
       </Table>
 
@@ -204,7 +186,7 @@ const MyTable = ({ columns, data }) => {
           </Tooltip>
         </Flex>
       </Flex>
-    </>
+    </Container>
   );
 };
 

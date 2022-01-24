@@ -18,7 +18,7 @@ export default function Pedidos({ orders }) {
   const columns = React.useMemo(
     () => [
       {
-        Header: "ID",
+        Header: "ID Pedido",
         accessor: "_id"
       },
       // {
@@ -32,7 +32,11 @@ export default function Pedidos({ orders }) {
       },
       {
         Header: "Usuário",
-        accessor: "user"
+        accessor: "userName"
+      },
+      {
+        Header: "ID Usuário",
+        accessor: "userId"
       },
       {
         Header: "Pago",
