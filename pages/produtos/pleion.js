@@ -5,7 +5,7 @@ import { getData } from "../../utils/fetchData"
 
 export default function Pleion({ products }) {
   return (
-    <Layout>
+    <Layout titlePage="Repor - Pleion">
       <TitleBanner titleName="Pleion" titleIcon="/Pleion.svg" />
       <CategoryProducts products={products} />
     </Layout>

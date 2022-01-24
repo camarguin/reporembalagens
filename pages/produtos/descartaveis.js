@@ -5,7 +5,7 @@ import { getData } from "../../utils/fetchData"
 
 export default function Descartavel({ products }) {
   return (
-    <Layout>
+    <Layout titlePage="Repor - Descartáveis">
       <TitleBanner titleName="Descartáveis" titleIcon="/DescartaveisIcon.svg" />
       <CategoryProducts products={products} />
     </Layout>

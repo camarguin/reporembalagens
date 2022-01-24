@@ -5,7 +5,7 @@ import { getData } from "../../utils/fetchData"
 
 export default function Condimentos({ products }) {
   return (
-    <Layout>
+    <Layout titlePage="Repor - Condimentos">
       <TitleBanner titleName="Condimentos" titleIcon="/Condimentos.svg" />
       <CategoryProducts products={products} />
     </Layout>

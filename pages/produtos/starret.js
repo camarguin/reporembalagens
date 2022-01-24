@@ -5,8 +5,8 @@ import { getData } from "../../utils/fetchData"
 
 export default function Starret({ products }) {
   return (
-    <Layout>
-      <TitleBanner titleName="Starret" titleIcon="/Starret.svg" />
+    <Layout titlePage="Repor - Starrett">
+      <TitleBanner titleName="Starrett" titleIcon="/Starrett.svg" />
       <CategoryProducts products={products} />
     </Layout>
   )

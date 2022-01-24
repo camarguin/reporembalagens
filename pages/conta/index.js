@@ -34,7 +34,7 @@ export default function Conta({ session, orders }) {
     }
   }, [])
   return (
-    <Layout isUserPage>
+    <Layout isUserPage titlePage="Repor - Minha Conta">
       <TitleBanner titleIcon="../Profile.svg" titleName="Sua Conta" />
       <Flex justify="space-between" px={["10px", "20px", "50px"]} direction={["column", "column", "row"]}>
         <MyInfo user={session.user} userId={session.userId} noInfo={noInfo} />
@@ -43,11 +43,9 @@ export default function Conta({ session, orders }) {
           <ModalOverlay />
           <ModalContent>
             <ModalHeader alignItems="center"><WarningTwoIcon color="red.600" fontSize="1.5rem" /> Aviso Importante</ModalHeader>
-            {/* <ModalCloseButton /> */}
             <ModalBody>
               <Text variant="p" color="black">Os dados da sua conta precisam ser atualizados</Text>
             </ModalBody>
-
             <ModalFooter>
               <Button variant="primary" mr={2} onClick={() => router.push('/conta/perfil')}>
                 Atualizar dados

@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from "next/head";
 import { useRouter } from 'next/router'
 import { Button } from '@chakra-ui/react'
 import { getSession } from 'next-auth/client'
@@ -10,7 +11,7 @@ import TitleBanner from '../../components/TitleBanner'
 export default function Perfil({ user }) {
   const router = useRouter()
   return (
-    <Layout isShortFooter isUserPage>
+    <Layout isShortFooter isUserPage titlePage="Repor - Meu Perfil">
       <TitleBanner titleIcon="../Profile.svg" titleName="Seu Perfil" />
       <Button
         variant="ghost"

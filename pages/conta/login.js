@@ -8,7 +8,7 @@ import TitleBanner from '../../components/TitleBanner'
 export default function Login({ providers, session, csrfToken }) {
 
   return (
-    <Layout isUserPage isShortFooter>
+    <Layout isUserPage isShortFooter titlePage="Repor - Entrar">
       <TitleBanner titleIcon="../Profile.svg" titleName="Login" />
       <FormLogin providers={providers} csrfToken={csrfToken} />
     </Layout>

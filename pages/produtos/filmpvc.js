@@ -5,7 +5,7 @@ import { getData } from "../../utils/fetchData"
 
 export default function Filmpvc({ products }) {
   return (
-    <Layout>
+    <Layout titlePage="Repor - Film PVC">
       <TitleBanner titleName="Film PVC" titleIcon="/FilmPVC.svg" />
       <CategoryProducts products={products} />
     </Layout>

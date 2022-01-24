@@ -13,7 +13,7 @@ export default function Pedido({ myOrder }) {
   const [order, setOrder] = useState(myOrder)
   const { pedido } = router.query
   return (
-    <Layout isUserPage>
+    <Layout isUserPage titlePage="Repor - Pedido">
       <TitleBanner titleName="Informações do Pedido" titleIcon="/OrderIcon.svg" />
       <Button
         variant="ghost"

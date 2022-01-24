@@ -5,7 +5,7 @@ import { getData } from "../../utils/fetchData"
 
 export default function LuvasMascarasToucas({ products }) {
   return (
-    <Layout>
+    <Layout titlePage="Repor - Luvas / Máscaras / Toucas">
       <TitleBanner titleName="Luvas / Máscaras / Toucas" titleIcon="/LuvasMascaraTouca.svg" />
       <CategoryProducts products={products} />
     </Layout>

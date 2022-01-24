@@ -215,7 +215,7 @@ const Header = ({ isUserPage }) => {
                 </NextLink>
                 <NextLink href="/produtos/starret">
                   <Button variant="link" as="a">
-                    Starret
+                    Starrett
                   </Button>
                 </NextLink>
               </Grid>
@@ -224,14 +224,16 @@ const Header = ({ isUserPage }) => {
         </Accordion>
       }
       {(isSmallerThan1024 && isOpen) &&
-        <VStack
+        <Grid
+          padding="70px 50px"
+          templateColumns='repeat(2, 1fr)'
           h="100vh"
           w="100%"
           zIndex={999}
           position="fixed"
           top="0"
           left="0"
-          justify="center"
+          // justify="center"
           bgColor="myGreen.300"
           overflowY="auto"
         >
@@ -299,7 +301,62 @@ const Header = ({ isUserPage }) => {
               Film PVC
             </Button>
           </NextLink>
-        </VStack>
+          <NextLink href="/produtos/sacolas">
+            <Button variant="linkMobile" as="a">
+              Sacolas
+            </Button>
+          </NextLink>
+          <NextLink href="/produtos/sacos-plasticos">
+            <Button variant="linkMobile" as="a">
+              Sacos Plásticos
+            </Button>
+          </NextLink>
+          <NextLink href="/produtos/sacos-lixo">
+            <Button variant="linkMobile" as="a">
+              Sacos de Lixo
+            </Button>
+          </NextLink>
+          <NextLink href="/produtos/limpeza">
+            <Button variant="linkMobile" as="a">
+              Limpeza
+            </Button>
+          </NextLink>
+          <NextLink href="/produtos/suporte-acessorios">
+            <Button variant="linkMobile" as="a">
+              Suportes e Acessórios
+            </Button>
+          </NextLink>
+          <NextLink href="/produtos/fitas">
+            <Button variant="linkMobile" as="a">
+              Fitas
+            </Button>
+          </NextLink>
+          <NextLink href="/produtos/acessorios-acougue">
+            <Button variant="linkMobile" as="a">
+              Acessórios para Açougue
+            </Button>
+          </NextLink>
+          <NextLink href="/produtos/condimentos">
+            <Button variant="linkMobile" as="a">
+              Condimentos
+            </Button>
+          </NextLink>
+          <NextLink href="/produtos/mundial">
+            <Button variant="linkMobile" as="a">
+              Mundial
+            </Button>
+          </NextLink>
+          <NextLink href="/produtos/luvas-mascaras-toucas">
+            <Button variant="linkMobile" as="a">
+              Luvas/Máscaras/Toucas
+            </Button>
+          </NextLink>
+          <NextLink href="/produtos/starret">
+            <Button variant="linkMobile" as="a">
+              Starrett
+            </Button>
+          </NextLink>
+        </Grid>
       }
       {isCartOpen &&
         <MyCart closeOnClick={closeCart} user={session?.user} />

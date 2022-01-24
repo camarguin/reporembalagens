@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import Head from "next/head";
 import { Container, Flex, Text, Button } from "@chakra-ui/react";
 import reporLogo from '../public/ReporLogoMenu.svg';
 import errorIllustration from '../public/error404.svg';
@@ -7,6 +8,9 @@ import errorIllustration from '../public/error404.svg';
 export default function Custom404() {
   return (
     <>
+      <Head>
+        <title>Repor - Página não econtrada</title>
+      </Head>
       <Container maxW textAlign="center" padding="10px 0px">
         <Link href="/">
           <Image src={reporLogo} />

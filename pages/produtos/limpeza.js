@@ -5,7 +5,7 @@ import { getData } from "../../utils/fetchData"
 
 export default function Limpeza({ products }) {
   return (
-    <Layout>
+    <Layout titlePage="Repor - Limpeza">
       <TitleBanner titleName="Limpeza" titleIcon="/Limpeza.svg" />
       <CategoryProducts products={products} />
     </Layout>

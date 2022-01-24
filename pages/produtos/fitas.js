@@ -5,7 +5,7 @@ import { getData } from "../../utils/fetchData"
 
 export default function Fitas({ products }) {
   return (
-    <Layout>
+    <Layout titlePage="Repor - Fitas">
       <TitleBanner titleName="Fitas" titleIcon="/Fitas.svg" />
       <CategoryProducts products={products} />
     </Layout>

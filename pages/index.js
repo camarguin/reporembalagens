@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Link from "next/link";
-import Head from "next/head";
 import { Text, Container, Stack } from "@chakra-ui/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -12,10 +11,7 @@ export default function Home({ products, result }) {
   const [productsList, setProductsList] = useState(products);
 
   return (
-    <Layout isLongFooter={false}>
-      <Head>
-        <title>Repor - Embalagens em Geral</title>
-      </Head>
+    <Layout isLongFooter={false} titlePage="Repor - Embalagens em Geral">
       <Text
         variant="h1"
         color="myGreen.300"

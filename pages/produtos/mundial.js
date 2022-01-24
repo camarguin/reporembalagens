@@ -5,7 +5,7 @@ import { getData } from "../../utils/fetchData"
 
 export default function Mundial({ products }) {
   return (
-    <Layout>
+    <Layout titlePage="Repor - Mundial">
       <TitleBanner titleName="Mundial" titleIcon="/Mundial.svg" />
       <CategoryProducts products={products} />
     </Layout>

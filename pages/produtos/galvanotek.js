@@ -5,7 +5,7 @@ import { getData } from "../../utils/fetchData"
 
 export default function Galvanotek({ products }) {
   return (
-    <Layout>
+    <Layout titlePage="Repor - Galvanotek">
       <TitleBanner titleName="Galvanotek" titleIcon="/Galvanotek.svg" />
       <CategoryProducts products={products} />
     </Layout>

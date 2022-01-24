@@ -5,8 +5,8 @@ import { getData } from "../../utils/fetchData"
 
 export default function AcessoriosAcougue({ products }) {
   return (
-    <Layout>
-      <TitleBanner titleName="Acessórios para açougue" titleIcon="/AcessóriosAçougue.svg" />
+    <Layout titlePage="Repor - Acessórios para açougue">
+      <TitleBanner titleName="Acessórios para açougue" titleIcon="/AcessoriosAcougue.svg" />
       <CategoryProducts products={products} />
     </Layout>
   )

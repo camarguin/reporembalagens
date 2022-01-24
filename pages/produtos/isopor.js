@@ -6,7 +6,7 @@ import { getData } from "../../utils/fetchData"
 
 export default function Isopor({ products }) {
   return (
-    <Layout>
+    <Layout titlePage="Repor - Isopor">
       <TitleBanner titleName="Isopor" titleIcon="/Isopor.svg" />
       <CategoryProducts products={products} />
     </Layout>

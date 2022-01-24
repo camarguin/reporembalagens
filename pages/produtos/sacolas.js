@@ -5,8 +5,8 @@ import { getData } from "../../utils/fetchData"
 
 export default function Sacolas({ products }) {
   return (
-    <Layout>
-      <TitleBanner titleName="Sacolas" titleIcon="/Sacolas.svg" />
+    <Layout titlePage="Repor - Sacolas">
+      <TitleBanner titleName="Sacolas" titleIcon="/Sacola.svg" />
       <CategoryProducts products={products} />
     </Layout>
   )

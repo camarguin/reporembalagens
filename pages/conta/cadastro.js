@@ -1,5 +1,5 @@
 import React from 'react'
-import { getProviders, getSession, signOut } from 'next-auth/client'
+import { getProviders, getSession } from 'next-auth/client'
 import FormSignup from '../../components/FormSignup'
 import Layout from '../../components/Layout'
 import TitleBanner from '../../components/TitleBanner'
@@ -7,7 +7,7 @@ import TitleBanner from '../../components/TitleBanner'
 export default function Cadastro({ providers, session }) {
 
   return (
-    <Layout isUserPage isShortFooter>
+    <Layout isUserPage isShortFooter titlePage="Repor - Cadastro">
       <TitleBanner titleIcon="../Profile.svg" titleName="Cadastro" />
       <FormSignup provider={providers.google} />
     </Layout>
