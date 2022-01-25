@@ -41,7 +41,7 @@ export default function Pedidos({ orders }) {
       {
         Header: "Pago",
         accessor: "paid",
-        Cell: ({ value }) => { return <Switch id='email-alerts' colorScheme='green' isChecked={value} /> }
+        Cell: ({ value, row }) => { return <Switch id='email-alerts' colorScheme='green' isChecked={value} onChange={(e) => console.log(row)} /> }
         // <input type="checkbox" checked={value} />
 
       }

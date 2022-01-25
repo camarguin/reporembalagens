@@ -26,8 +26,7 @@ export default function Conta({ session, orders }) {
 
   useEffect(() => {
     if (session.user.cpf === '' || session.user.name === '' || session.user.phone === ''
-      || session.user.address.street === '' || session.user.address.district === '' ||
-      session.user.address.complement === '' || session.user.address.cep === ''
+      || session.user.address.street === '' || session.user.address.district === '' || session.user.address.cep === ''
     ) {
       onOpen()
       setNoInfo(true)
