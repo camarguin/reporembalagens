@@ -301,7 +301,7 @@ const Header = ({ isUserPage }) => {
               Film PVC
             </Button>
           </NextLink>
-          <NextLink href="/produtos/sacolas">
+          {/* <NextLink href="/produtos/sacolas">
             <Button variant="linkMobile" as="a">
               Sacolas
             </Button>
@@ -355,7 +355,7 @@ const Header = ({ isUserPage }) => {
             <Button variant="linkMobile" as="a">
               Starrett
             </Button>
-          </NextLink>
+          </NextLink> */}
         </Grid>
       }
       {isCartOpen &&

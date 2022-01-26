@@ -1,17 +1,13 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import Image from 'next/image';
 import NextLink from 'next/link';
 import { useRouter } from "next/router";
 import {
-  Flex, Button, IconButton, Grid, HStack, VStack, useMediaQuery, useDisclosure, Accordion,
-  AccordionItem, AccordionButton, AccordionPanel, Text
+  Flex, Button, HStack, useMediaQuery, useDisclosure, Box
 } from '@chakra-ui/react';
-import { BiUserCircle, BiMenu } from 'react-icons/bi';
-import { AiOutlineShoppingCart, AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { signOut, useSession } from 'next-auth/client'
 import reporLogo from '../public/ReporLogoMenu.svg';
 import whiteReporLogo from '../public/WhiteReporLogoMenu.svg';
-import MyCart from "./MyCart";
 import { DataContext } from "../context/GlobalState";
 
 const AdminHeader = ({ isUserPage }) => {
@@ -33,7 +29,11 @@ const AdminHeader = ({ isUserPage }) => {
           Usuarios
         </NextLink>
       </HStack>
-      {/* <Image src={reporLogo} /> */}
+      <Flex _hover={{ cursor: "pointer" }}>
+        <NextLink href="/">
+          <Image src={reporLogo} width="90px" height="50px" />
+        </NextLink>
+      </Flex>
       <HStack>
         <Button bgColor="white" color="myGreen.300" height="30px" margin="0px 10px" padding="5px 30px" onClick={() => router.push('/conta')}>
           Minha Conta

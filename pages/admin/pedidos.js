@@ -16,11 +16,9 @@ function sortOrders(myOrders) {
 }
 
 export default function Pedidos({ orders }) {
-  // const [isModalOpen, setModalOpen] = useState(false)
   const toast = useToast()
 
   const updatePaid = async (row, paid) => {
-    // console.log(paid)
     const res = await fetch(`/api/order`, {
       method: 'PATCH',
       headers: {
