@@ -62,7 +62,7 @@ export default function Pedidos({ orders }) {
                   <ModalCloseButton />
                   <ModalBody>
                     {value.map(product => (
-                      <Text variant="p" color="black">{product.name} - {product.quantity}</Text>
+                      <Text key={product._id} variant="p" color="black">{product.name} - {product.quantity}</Text>
                     ))}
                   </ModalBody>
                 </ModalContent>
