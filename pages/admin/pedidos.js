@@ -1,7 +1,7 @@
 import React from 'react'
 import { getSession } from 'next-auth/client';
 import { getData } from '../../utils/fetchData';
-import { Text, Switch } from '@chakra-ui/react';
+import { Text, Switch, useToast, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody } from '@chakra-ui/react';
 import { compareDesc, parseISO } from 'date-fns'
 import moment from 'moment';
 import AdminLayout from '../../components/AdminLayout';
@@ -15,6 +15,30 @@ function sortOrders(myOrders) {
 }
 
 export default function Pedidos({ orders }) {
+  const toast = useToast()
+
+  const updatePaid = async (row, paid) => {
+    // console.log(paid)
+    const res = await fetch(`/api/order`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        orderId: row.original._id,
+        paid: paid
+      })
+    }).then(response => (
+      toast({
+        title: 'Pedido atualizado',
+        description: 'Pedido marcado como pago',
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+      })
+    ))
+  }
+
   const columns = React.useMemo(
     () => [
       {
@@ -23,7 +47,20 @@ export default function Pedidos({ orders }) {
       },
       // {
       //   Header: "Produtos",
-      //   accessor: "products"
+      //   accessor: "products",
+      //   Cell: ({ value }) => {
+      //     return (
+      //       <Modal isOpen={isOpen}>
+      //         <ModalOverlay />
+      //         <ModalContent>
+      //           <ModalHeader alignItems="center">Pedido</ModalHeader>
+      //           <ModalBody>
+      //             <Text variant="p" color="black">Os dados da sua conta precisam ser atualizados</Text>
+      //           </ModalBody>
+      //         </ModalContent>
+      //       </Modal>
+      //     )
+      //   }
       // },
       {
         Header: "Data",
@@ -41,9 +78,14 @@ export default function Pedidos({ orders }) {
       {
         Header: "Pago",
         accessor: "paid",
-        Cell: ({ value, row }) => { return <Switch id='email-alerts' colorScheme='green' isChecked={value} onChange={(e) => console.log(row)} /> }
-        // <input type="checkbox" checked={value} />
-
+        Cell: ({ value, row }) => {
+          return <Switch
+            id='email-alerts'
+            colorScheme='green'
+            defaultChecked={value}
+            value={value}
+            onChange={(e) => updatePaid(row, e.target.checked)} />
+        }
       }
     ],
     []

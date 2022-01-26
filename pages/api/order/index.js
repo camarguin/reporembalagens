@@ -11,6 +11,9 @@ export default async (req, res) => {
     case "GET":
       await getOrders(req, res)
       break;
+    case "PATCH":
+      await updateOrder(req, res)
+      break;
   }
 }
 
@@ -42,4 +45,18 @@ const getOrders = async (req, res) => {
     return res.status(500).json({ err: err.message })
   }
 }
+
+const updateOrder = async (req, res) => {
+  const { orderId, paid } = req.body
+  try {
+    const order = await Orders.findOneAndUpdate({ '_id': orderId },
+      {
+        'paid': paid,
+      })
+    res.status(200).json({ msg: 'order updated' })
+  } catch (err) {
+    return res.status(500).json({ err: err.message })
+  }
+}
+
 
