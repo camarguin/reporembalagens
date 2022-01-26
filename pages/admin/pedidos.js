@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { getSession } from 'next-auth/client';
 import { getData } from '../../utils/fetchData';
-import { Text, Switch, useToast, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody } from '@chakra-ui/react';
+import { Text, Switch, useToast, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, IconButton, ModalCloseButton, useDisclosure } from '@chakra-ui/react';
 import { compareDesc, parseISO } from 'date-fns'
 import moment from 'moment';
 import AdminLayout from '../../components/AdminLayout';
 import AdminTitleBanner from '../../components/AdminTitleBanner';
 import MyTable from '../../components/MyTable';
+import { CopyIcon } from '@chakra-ui/icons';
 
 function sortOrders(myOrders) {
   return myOrders.sort((a, b) =>
@@ -15,6 +16,7 @@ function sortOrders(myOrders) {
 }
 
 export default function Pedidos({ orders }) {
+  // const [isModalOpen, setModalOpen] = useState(false)
   const toast = useToast()
 
   const updatePaid = async (row, paid) => {
@@ -45,23 +47,30 @@ export default function Pedidos({ orders }) {
         Header: "ID Pedido",
         accessor: "_id"
       },
-      // {
-      //   Header: "Produtos",
-      //   accessor: "products",
-      //   Cell: ({ value }) => {
-      //     return (
-      //       <Modal isOpen={isOpen}>
-      //         <ModalOverlay />
-      //         <ModalContent>
-      //           <ModalHeader alignItems="center">Pedido</ModalHeader>
-      //           <ModalBody>
-      //             <Text variant="p" color="black">Os dados da sua conta precisam ser atualizados</Text>
-      //           </ModalBody>
-      //         </ModalContent>
-      //       </Modal>
-      //     )
-      //   }
-      // },
+      {
+        Header: "Produtos",
+        accessor: "products",
+        Cell: ({ value }) => {
+          const { isOpen, onOpen, onClose } = useDisclosure()
+          return (
+            <>
+              <IconButton aria-label='Ver Produtos do pedido' icon={<CopyIcon />} onClick={onOpen} />
+              <Modal isOpen={isOpen} onClose={onClose}>
+                <ModalOverlay />
+                <ModalContent>
+                  <ModalHeader alignItems="center">Pedido</ModalHeader>
+                  <ModalCloseButton />
+                  <ModalBody>
+                    {value.map(product => (
+                      <Text variant="p" color="black">{product.name} - {product.quantity}</Text>
+                    ))}
+                  </ModalBody>
+                </ModalContent>
+              </Modal>
+            </>
+          )
+        }
+      },
       {
         Header: "Data",
         accessor: "createdAt",
