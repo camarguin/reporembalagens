@@ -32,9 +32,9 @@ const Products = ({ myProducts, categoryHref }) => {
         },
         "620": {
           "slidesPerView": 2,
-          "spaceBetween": 40
+          "spaceBetween": 30
         },
-        "1024": {
+        "1025": {
           "slidesPerView": 3,
           "spaceBetween": 50
         }

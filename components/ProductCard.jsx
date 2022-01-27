@@ -49,7 +49,8 @@ const ProductCard = ({ product }) => {
     <Box
       borderColor="myGreen.300"
       margin="0 auto"
-      width="350px"
+      width={["330px", "330px", "340px", "350px"]}
+      maxW={["85vw", "350px", "340px", "350px"]}
       height="300px"
       onMouseEnter={over}
       onMouseLeave={out}
@@ -58,13 +59,13 @@ const ProductCard = ({ product }) => {
         <Box
           position="absolute"
           height="298px"
-          width="348px"
+          width={["328px", "328px", "338px", "349px"]}
           margin="1px"
           borderRadius="10px"
         >
           <Box
             opacity="0.9"
-            width="348px"
+            width={["328px", "328px", "338px", "349px"]}
             height="298px"
             position="absolute"
             backgroundColor="myGreen.100"
