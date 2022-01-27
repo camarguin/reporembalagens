@@ -3,7 +3,7 @@ import Image from 'next/image';
 import NextLink from 'next/link';
 import { useRouter } from "next/router";
 import {
-  Flex, Button, IconButton, Grid, HStack, VStack, useMediaQuery, useDisclosure, Accordion,
+  Flex, Button, IconButton, Grid, useMediaQuery, useDisclosure, Accordion,
   AccordionItem, AccordionButton, AccordionPanel, Text
 } from '@chakra-ui/react';
 import { BiUserCircle, BiMenu } from 'react-icons/bi';
@@ -79,7 +79,8 @@ const Header = ({ isUserPage }) => {
             onClick={openCart}
           />
           <span style={{
-            position: 'absolute',
+            // position: 'absolute',
+            position: 'relative',
             justifyContent: 'center',
             alignItems: 'center',
             display: 'flex',
@@ -87,8 +88,9 @@ const Header = ({ isUserPage }) => {
             height: '25px',
             borderRadius: '100%',
             background: '#0C7149',
-            right: '50px',
-            top: '15px',
+            // right: '50px',
+            right: '20px',
+            top: '-5px',
             color: 'white',
             fontSize: '0.8rem',
             cursor: 'pointer',
