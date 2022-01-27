@@ -25,23 +25,23 @@ export default function Home({ products, result }) {
           <Link href="/produtos/descartaveis">
             <Text variant="h2">Descartáveis</Text>
           </Link>
-          <Products myProducts={productsList.filter((product) => product.category.includes("descartavel"))} />
+          <Products myProducts={productsList.filter((product) => product.category.includes("descartavel"))} categoryHref="/produtos/descartaveis"/>
           <Link href="/produtos/isopor">
             <Text variant="h2">Isopor</Text>
           </Link>
-          <Products myProducts={productsList.filter((product) => product.category.includes("isopor"))} />
+          <Products myProducts={productsList.filter((product) => product.category.includes("isopor"))} categoryHref="/produtos/isopor"/>
           <Link href="/produtos/aluminio">
             <Text variant="h2">Alumínio</Text>
           </Link>
-          <Products myProducts={productsList.filter((product) => product.category.includes("aluminio"))} />
+          <Products myProducts={productsList.filter((product) => product.category.includes("aluminio"))} categoryHref="/produtos/aluminio"/>
           <Link href="/produtos/papel">
             <Text variant="h2">Papel</Text>
           </Link>
-          <Products myProducts={productsList.filter((product) => product.category.includes("papel"))} />
+          <Products myProducts={productsList.filter((product) => product.category.includes("papel"))} categoryHref="/produtos/papel"/>
           <Link href="/produtos/sacolas">
             <Text variant="h2">Sacolas</Text>
           </Link>
-          <Products myProducts={productsList.filter((product) => product.category.includes("sacola"))} />
+          <Products myProducts={productsList.filter((product) => product.category.includes("sacola"))} categoryHref="/produtos/sacolas"/>
         </Stack>
       </Container>
     </Layout>

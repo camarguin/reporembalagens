@@ -4,8 +4,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import ProductCard from './ProductCard';
+import SeeMoreCard from './SeeMoreCard';
 
-const Products = ({ myProducts }) => {
+const Products = ({ myProducts, categoryHref }) => {
 
   const swiperItems = myProducts.map(product => {
     return (
@@ -40,6 +41,9 @@ const Products = ({ myProducts }) => {
       }}
     >
       {swiperItems}
+      <SwiperSlide>
+        <SeeMoreCard categoryHref={categoryHref} />
+      </SwiperSlide>
     </Swiper >
   );
 };

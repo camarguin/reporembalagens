@@ -1,35 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
   Table, Thead, Tbody, Tr, Th, Td, Flex, IconButton, Text, Tooltip, Select, NumberInput,
   NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, Container
 } from "@chakra-ui/react";
 import { useTable, usePagination, useSortBy, useGlobalFilter } from "react-table";
+import { AiOutlineAppstoreAdd } from 'react-icons/ai';
 import { ArrowRightIcon, ArrowLeftIcon, ChevronRightIcon, ChevronLeftIcon } from "@chakra-ui/icons";
 import GlobalFilter from './GlobalFilter';
 
-const EditableCell = ({
-  value: initialValue,
-  row: { index },
-  column: { id },
-  updateMyData
-}) => {
-  const [value, setValue] = useState(initialValue)
-
-  const onChange = e => {
-    setValue(e.target.value)
-  }
-
-  const onBlur = () => {
-    updateMyData(index, id, value)
-  }
-  useEffect(() => {
-    setValue(initialValue)
-  }, [initialValue])
-
-  return <input type="checkbox" value={value} onChange={onChange} onBlur={onBlur} />
-}
-
-const MyTable = ({ columns, data }) => {
+const MyTable = ({ columns, data, isProducts }) => {
   const {
     getTableProps,
     getTableBodyProps,
@@ -58,12 +37,17 @@ const MyTable = ({ columns, data }) => {
     usePagination
   );
 
-  // const { globalFilter } = state
-
   // Render the UI for your table
   return (
     <Container padding="0px 20px" maxW>
-      <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+      {isProducts ? (
+        <Flex direction="row" justify="space-between" align="center">
+          <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+          <IconButton variant="primary" color="white" aria-label='Adicionar Produto' icon={<AiOutlineAppstoreAdd />} />
+        </Flex>
+      ) :
+        <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+      }
       <Table {...getTableProps()}>
         <Thead>
           {headerGroups.map((headerGroup) => {

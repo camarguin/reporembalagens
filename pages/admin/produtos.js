@@ -28,7 +28,6 @@ export default function Produtos({ products }) {
       {
         Header: "Imagem",
         accessor: "image",
-        // Cell: ({ value }) => { return <Image src={value} height="50px" /> }
         Cell: ({ value }) => { return <a href={value} target="_blank" rel="noreferrer">{value}</a> }
       }
     ],
@@ -37,7 +36,7 @@ export default function Produtos({ products }) {
   return (
     <AdminLayout>
       <AdminTitleBanner titleName="Produtos" titleIcon="/IconProducts.svg" />
-      <MyTable columns={columns} data={products} />
+      <MyTable columns={columns} data={products} isProducts />
     </AdminLayout>
   )
 }
