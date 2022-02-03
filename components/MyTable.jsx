@@ -1,12 +1,13 @@
 import React from 'react';
 import {
-  Table, Thead, Tbody, Tr, Th, Td, Flex, IconButton, Text, Tooltip, Select, NumberInput,
+  Table, Thead, Tbody, Tr, Th, Td, Flex, IconButton, Text, Tooltip, Select, NumberInput, useDisclosure,
   NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, Container
 } from "@chakra-ui/react";
 import { useTable, usePagination, useSortBy, useGlobalFilter } from "react-table";
 import { AiOutlineAppstoreAdd } from 'react-icons/ai';
 import { ArrowRightIcon, ArrowLeftIcon, ChevronRightIcon, ChevronLeftIcon } from "@chakra-ui/icons";
 import GlobalFilter from './GlobalFilter';
+import AddProduct from './AddProduct';
 
 const MyTable = ({ columns, data, isProducts }) => {
   const {
@@ -36,14 +37,15 @@ const MyTable = ({ columns, data, isProducts }) => {
     useSortBy,
     usePagination
   );
-
+  const { isOpen, onOpen, onClose } = useDisclosure()
   // Render the UI for your table
   return (
     <Container padding="0px 20px" maxW>
       {isProducts ? (
         <Flex direction="row" justify="space-between" align="center">
           <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
-          <IconButton variant="primary" color="white" aria-label='Adicionar Produto' icon={<AiOutlineAppstoreAdd />} />
+          <IconButton variant="primary" color="white" aria-label='Adicionar Produto' icon={<AiOutlineAppstoreAdd />} onClick={onOpen} />
+          <AddProduct isOpen={isOpen} onClose={onClose} />
         </Flex>
       ) :
         <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />

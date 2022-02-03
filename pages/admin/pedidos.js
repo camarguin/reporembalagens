@@ -31,7 +31,7 @@ export default function Pedidos({ orders }) {
     }).then(response => (
       toast({
         title: 'Pedido atualizado',
-        description: 'Pedido marcado como pago',
+        description: 'Pedido marcado como pago com sucesso',
         status: "success",
         duration: 5000,
         isClosable: true,
