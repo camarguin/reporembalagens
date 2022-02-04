@@ -28,19 +28,19 @@ const getUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
   const { userId } = req.query
-  const { name, phone, cpf, street, district, complement, cep } = req.body
+  const { name, phone, cpf, email, street, district, complement, cep } = req.body
   try {
     const user = await Users.findOneAndUpdate({ '_id': userId },
       {
         'name': name,
         'phone': phone,
+        'email': email,
         'cpf': cpf,
         'address.street': street,
         'address.district': district,
         'address.complement': complement,
         'address.cep': cep
       })
-    // console.log(user)
     res.status(200).json({ msg: 'user found' })
 
   } catch (err) {
