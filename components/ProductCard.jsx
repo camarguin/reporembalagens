@@ -1,4 +1,5 @@
 import { useState, useContext } from 'react';
+import NextImage from 'next/image';
 import {
   Box, Image, Text, VStack, Stack, Button, NumberInput,
   NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper,
@@ -110,6 +111,7 @@ const ProductCard = ({ product }) => {
       >
         <Box width="100%" maxHeight="150px" p="10px 0">
           <Image src={product.image} alt="Produto Imagem" boxSize="fit" margin="0 auto" maxHeight="140px" />
+          {/* <NextImage src={product.image} alt="Produto" width={150} height={100} /> */}
         </Box>
         <VStack spacing="0">
           <Text variant="productName">

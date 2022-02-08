@@ -1,9 +1,7 @@
 import React from 'react'
-import { Container, Text } from '@chakra-ui/react';
 import { getSession } from 'next-auth/client';
 import MyTable from '../../components/MyTable';
 import { getData } from '../../utils/fetchData';
-import TitleBanner from '../../components/TitleBanner';
 import AdminLayout from '../../components/AdminLayout';
 import AdminTitleBanner from '../../components/AdminTitleBanner';
 
@@ -20,6 +18,10 @@ export default function Usuarios({ users }) {
           {
             Header: "CPF/CNPJ",
             accessor: "cpf"
+          },
+          {
+            Header: "Telefone",
+            accessor: "phone",
           },
           {
             Header: "Email",

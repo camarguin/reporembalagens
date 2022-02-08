@@ -1,7 +1,8 @@
 import React from 'react'
 import { getSession } from 'next-auth/client';
-import AdminLayout from '../../components/AdminLayout'
 import { Text } from '@chakra-ui/react';
+import AdminLayout from '../../components/AdminLayout'
+import AdminDashboard from '../../components/AdminDashboard';
 
 export default function Index({ session }) {
   return (
@@ -10,6 +11,7 @@ export default function Index({ session }) {
       <Text>
         Bem vindo, {session.user.name}
       </Text>
+      {/* <AdminDashboard /> */}
 
     </AdminLayout>
   )
