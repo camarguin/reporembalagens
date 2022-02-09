@@ -38,7 +38,7 @@ export const textStyles = {
     error: {
       fontSize: "1rem",
       color: "#F05454",
-      fontWeight: "400",
+      fontWeight: "800",
     }
   }
 }

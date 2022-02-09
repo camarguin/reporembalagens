@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {
   Text, Image, IconButton, useToast, Modal, ModalOverlay, ModalContent,
-  ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure, Button
+  ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure, Button, Switch
 } from '@chakra-ui/react';
 import { getSession } from 'next-auth/client';
 import { BsFillTrashFill } from 'react-icons/bs';
@@ -13,6 +13,29 @@ import MyTable from '../../components/MyTable';
 export default function Produtos({ products }) {
   const [productsList, setProductsList] = useState(products)
   const toast = useToast()
+
+  // Update stock
+  const updateStock = async (row, stock) => {
+    const res = await fetch(`/api/product`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        productId: row.original._id,
+        stock: stock
+      })
+    }).then(response => (
+      toast({
+        title: 'Produto atualizado',
+        description: 'Produto atualizado com sucesso',
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+      })
+    ))
+  }
+
 
   //Delete product
   const handleRemoveProduct = async (id) => {
@@ -34,9 +57,6 @@ export default function Produtos({ products }) {
         isClosable: true,
       })
     })
-    // setProductsList(
-    //   productsList.filter((product) => product._id != id)
-    // );
   }
 
   const columns = React.useMemo(
@@ -61,6 +81,18 @@ export default function Produtos({ products }) {
         Header: "Imagem",
         accessor: "image",
         Cell: ({ value }) => { return <a href={value} target="_blank" rel="noreferrer">{value}</a> }
+      },
+      {
+        Header: "Estoque",
+        accessor: "stock",
+        Cell: ({ value, row }) => {
+          return <Switch
+            id='stock'
+            colorScheme='green'
+            defaultChecked={value}
+            value={value}
+            onChange={(e) => updateStock(row, e.target.checked)} />
+        }
       },
       {
         Header: "",

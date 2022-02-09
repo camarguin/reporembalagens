@@ -14,6 +14,9 @@ export default async (req, res) => {
     case "DELETE":
       await deleteProduct(req, res)
       break;
+    case "PATCH":
+      await updateProduct(req, res)
+      break;
   }
 }
 
@@ -54,6 +57,19 @@ const deleteProduct = async (req, res) => {
     const { id } = req.body
     await Products.findByIdAndDelete(id)
     res.status(200).json({ msg: 'Product deleted' })
+  } catch (err) {
+    return res.status(500).json({ err: err.message })
+  }
+}
+
+const updateProduct = async (req, res) => {
+  const { productId, stock } = req.body
+  try {
+    const product = await Products.findOneAndUpdate({ '_id': productId },
+      {
+        'stock': stock,
+      })
+    res.status(200).json({ msg: 'product updated' })
   } catch (err) {
     return res.status(500).json({ err: err.message })
   }

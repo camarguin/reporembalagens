@@ -71,6 +71,7 @@ const ProductCard = ({ product }) => {
             position="absolute"
             backgroundColor="myGreen.100"
             borderRadius="10px"
+            zIndex={10}
           >
           </Box>
           <FormControl
@@ -80,24 +81,33 @@ const ProductCard = ({ product }) => {
             padding="10px"
             textAlign="center"
             paddingTop="25%"
+            zIndex={10}
           >
             <Stack direction="row" align="center" justify="center">
-              <Text fontWeight="semibold">Qtd:</Text>
-              <NumberInput color="black" min={1} value={qty} backgroundColor="white" borderRadius="10px" size="xs" isDisabled={product.stock === 0} >
-                <NumberInputField onChange={(e) => setQty(e.target.value)} />
-                <NumberInputStepper>
-                  <NumberIncrementStepper onClick={e => setQty(qty + 1)} />
-                  <NumberDecrementStepper onClick={e => (
-                    qty > 1 && setQty(qty - 1)
-                  )} />
-                </NumberInputStepper>
-              </NumberInput>
+              {product.stock ?
+                (
+                  <>
+                    <Text fontWeight="semibold">Qtd:</Text>
+                    <NumberInput color="black" min={1} value={qty} backgroundColor="white" borderRadius="10px" size="xs" >
+                      <NumberInputField onChange={(e) => setQty(e.target.value)} />
+                      <NumberInputStepper>
+                        <NumberIncrementStepper onClick={e => setQty(qty + 1)} />
+                        <NumberDecrementStepper onClick={e => (
+                          qty > 1 && setQty(qty - 1)
+                        )} />
+                      </NumberInputStepper>
+                    </NumberInput>
+                  </>
+                ) :
+                (
+                  <Text whiteSpace="nowrap" variant="error">Fora de estoque</Text>
+                )
+              }
             </Stack>
-
-            <Button type="submit" variant="primary" marginTop="5px" onClick={addItem} disabled={product.stock === 0}>
+            <Button type="submit" variant="primary" marginTop="5px" onClick={addItem} disabled={!product.stock} >
               Adicionar
             </Button>
-            {product.stock === 0 && <Text whiteSpace="nowrap" variant="error">* Sem Estoque</Text>}
+            {/* {!product.stock && <Text whiteSpace="nowrap" variant="error">* Sem Estoque</Text>} */}
 
           </FormControl>
         </Box>
@@ -109,9 +119,10 @@ const ProductCard = ({ product }) => {
         height="300px"
         textAlign="center"
       >
-        <Box width="100%" maxHeight="150px" p="10px 0">
-          <Image src={product.image} alt="Produto Imagem" boxSize="fit" margin="0 auto" maxHeight="140px" />
-          {/* <NextImage src={product.image} alt="Produto" width={150} height={100} /> */}
+        {/* <Box maxHeight="140px" height="150px" width="200px" p="10px 0" position="relative" bgColor="red"> */}
+        <Box height="150px" width="200px" position="relative" margin="0 auto">
+          {/* <Image src={product.image} alt="Produto Imagem" boxSize="fit" margin="0 auto" maxHeight="140px" /> */}
+          <NextImage src={product.image} alt="Produto" layout="fill" objectFit="contain" />
         </Box>
         <VStack spacing="0">
           <Text variant="productName">
