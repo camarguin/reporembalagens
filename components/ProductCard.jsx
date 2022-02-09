@@ -80,7 +80,7 @@ const ProductCard = ({ product }) => {
             margin="0 auto"
             padding="10px"
             textAlign="center"
-            paddingTop="25%"
+            paddingTop="30%"
             zIndex={10}
           >
             <Stack direction="row" align="center" justify="center">
@@ -118,9 +118,10 @@ const ProductCard = ({ product }) => {
         borderColor="myGreen.300"
         height="300px"
         textAlign="center"
+        p="10px" //Added
       >
         {/* <Box maxHeight="140px" height="150px" width="200px" p="10px 0" position="relative" bgColor="red"> */}
-        <Box height="150px" width="200px" position="relative" margin="0 auto">
+        <Box height="145px" width="200px" position="relative" p="10px 0" margin="0 auto">
           {/* <Image src={product.image} alt="Produto Imagem" boxSize="fit" margin="0 auto" maxHeight="140px" /> */}
           <NextImage src={product.image} alt="Produto" layout="fill" objectFit="contain" />
         </Box>
