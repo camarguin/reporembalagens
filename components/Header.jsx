@@ -269,42 +269,42 @@ const Header = ({ isUserPage }) => {
             templateColumns='repeat(2, 1fr)'
             gap="10px"
           >
-            <NextLink href="produtos/descartaveis">
+            <NextLink href="/produtos/descartaveis">
               <Button variant="linkMobile" as="a" fontSize="2xl">
                 Descartáveis
               </Button>
             </NextLink>
-            <NextLink href="produtos/isopor">
+            <NextLink href="/produtos/isopor">
               <Button variant="linkMobile" as="a">
                 Isopor
               </Button>
             </NextLink>
-            <NextLink href="produtos/aluminio">
+            <NextLink href="/produtos/aluminio">
               <Button variant="linkMobile" as="a">
                 Alumínio
               </Button>
             </NextLink>
-            <NextLink href="produtos/papel">
+            <NextLink href="/produtos/papel">
               <Button variant="linkMobile" as="a">
                 Papel
               </Button>
             </NextLink>
-            <NextLink href="produtos/galvanotek">
+            <NextLink href="/produtos/galvanotek">
               <Button variant="linkMobile" as="a">
                 Galvanotek
               </Button>
             </NextLink>
-            <NextLink href="produtos/pleion">
+            <NextLink href="/produtos/pleion">
               <Button variant="linkMobile" as="a">
                 Pleion
               </Button>
             </NextLink>
-            <NextLink href="produtos/plastico">
+            <NextLink href="/produtos/plastico">
               <Button variant="linkMobile" as="a">
                 Plástico
               </Button>
             </NextLink>
-            <NextLink href="produtos/filmpvc">
+            <NextLink href="/produtos/filmpvc">
               <Button variant="linkMobile" as="a">
                 Film PVC
               </Button>
