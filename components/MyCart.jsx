@@ -15,7 +15,7 @@ const MyCart = ({ closeOnClick, user }) => {
   const [myUser, setMyUser] = useState(user)
   const { cart } = state
   const [isEmpty, setIsEmpty] = useState(cart.length === 0)
-  var windowReference = window.open();
+  // var windowReference = window.open();
 
   useEffect(() => {
     setIsEmpty(cart.length === 0)
@@ -57,8 +57,8 @@ const MyCart = ({ closeOnClick, user }) => {
             Pedido: 
             ${cart.map(product => ` ${product.name} - ${product.quantity}\n `)} 
             `
-          // window.open(`https://api.whatsapp.com/send?phone=5534997673100&text=${encodeURI(autoMessageOrder)}`, "_blank")
-          windowReference.location = `https://api.whatsapp.com/send?phone=5534997673100&text=${encodeURI(autoMessageOrder)}`
+          window.open(`https://api.whatsapp.com/send?phone=5534997673100&text=${encodeURI(autoMessageOrder)}`, "_blank")
+          // windowReference.location = `https://api.whatsapp.com/send?phone=5534997673100&text=${encodeURI(autoMessageOrder)}`
         }
         )
         dispatch(clearCart())
