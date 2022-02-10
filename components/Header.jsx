@@ -227,8 +227,8 @@ const Header = ({ isUserPage }) => {
       }
       {(isSmallerThan1024 && isOpen) &&
         <Grid
-          padding="70px 50px"
-          templateColumns='repeat(2, 1fr)'
+          padding="20px 20px"
+          templateColumns='repeat(1, 1fr)'
           h="100vh"
           w="100%"
           zIndex={999}
@@ -254,110 +254,119 @@ const Header = ({ isUserPage }) => {
           />
           <NextLink href="/conta">
             <IconButton
+              width="200px"
+              p="0"
+              m="0 auto"
               aria-label="Sua conta"
               variant="link"
               color="myGreen.50"
               icon={<BiUserCircle />}
-              fontSize={["2rem", "2rem", "2.1rem"]}
+              fontSize={["3rem", "3rem", "2.1rem"]}
               _focus={{ outline: "none" }}
-
             />
           </NextLink>
-          <NextLink href="produtos/descartaveis">
-            <Button variant="linkMobile" as="a" fontSize="2xl">
-              Descartáveis
-            </Button>
-          </NextLink>
-          <NextLink href="produtos/isopor">
-            <Button variant="linkMobile" as="a">
-              Isopor
-            </Button>
-          </NextLink>
-          <NextLink href="produtos/aluminio">
-            <Button variant="linkMobile" as="a">
-              Alumínio
-            </Button>
-          </NextLink>
-          <NextLink href="produtos/papel">
-            <Button variant="linkMobile" as="a">
-              Papel
-            </Button>
-          </NextLink>
-          <NextLink href="produtos/galvanotek">
-            <Button variant="linkMobile" as="a">
-              Galvanotek
-            </Button>
-          </NextLink>
-          <NextLink href="produtos/pleion">
-            <Button variant="linkMobile" as="a">
-              Pleion
-            </Button>
-          </NextLink>
-          <NextLink href="produtos/plastico">
-            <Button variant="linkMobile" as="a">
-              Plástico
-            </Button>
-          </NextLink>
-          <NextLink href="produtos/filmpvc">
-            <Button variant="linkMobile" as="a">
-              Film PVC
-            </Button>
-          </NextLink>
-          {/* <NextLink href="/produtos/sacolas">
-            <Button variant="linkMobile" as="a">
-              Sacolas
-            </Button>
-          </NextLink>
-          <NextLink href="/produtos/sacos-plasticos">
-            <Button variant="linkMobile" as="a">
-              Sacos Plásticos
-            </Button>
-          </NextLink>
-          <NextLink href="/produtos/sacos-lixo">
-            <Button variant="linkMobile" as="a">
-              Sacos de Lixo
-            </Button>
-          </NextLink>
-          <NextLink href="/produtos/limpeza">
-            <Button variant="linkMobile" as="a">
-              Limpeza
-            </Button>
-          </NextLink>
-          <NextLink href="/produtos/suporte-acessorios">
-            <Button variant="linkMobile" as="a">
-              Suportes e Acessórios
-            </Button>
-          </NextLink>
-          <NextLink href="/produtos/fitas">
-            <Button variant="linkMobile" as="a">
-              Fitas
-            </Button>
-          </NextLink>
-          <NextLink href="/produtos/acessorios-acougue">
-            <Button variant="linkMobile" as="a">
-              Acessórios para Açougue
-            </Button>
-          </NextLink>
-          <NextLink href="/produtos/condimentos">
-            <Button variant="linkMobile" as="a">
-              Condimentos
-            </Button>
-          </NextLink>
-          <NextLink href="/produtos/mundial">
-            <Button variant="linkMobile" as="a">
-              Mundial
-            </Button>
-          </NextLink>
-          <NextLink href="/produtos/luvas-mascaras-toucas">
-            <Button variant="linkMobile" as="a">
-              Luvas/Máscaras/Toucas
-            </Button>
-          </NextLink>
-          <NextLink href="/produtos/starret">
-            <Button variant="linkMobile" as="a">
-              Starrett
-            </Button>
-          </NextLink> */}
+          <Grid
+            templateColumns='repeat(2, 1fr)'
+            gap="10px"
+          >
+            <NextLink href="produtos/descartaveis">
+              <Button variant="linkMobile" as="a" fontSize="2xl">
+                Descartáveis
+              </Button>
+            </NextLink>
+            <NextLink href="produtos/isopor">
+              <Button variant="linkMobile" as="a">
+                Isopor
+              </Button>
+            </NextLink>
+            <NextLink href="produtos/aluminio">
+              <Button variant="linkMobile" as="a">
+                Alumínio
+              </Button>
+            </NextLink>
+            <NextLink href="produtos/papel">
+              <Button variant="linkMobile" as="a">
+                Papel
+              </Button>
+            </NextLink>
+            <NextLink href="produtos/galvanotek">
+              <Button variant="linkMobile" as="a">
+                Galvanotek
+              </Button>
+            </NextLink>
+            <NextLink href="produtos/pleion">
+              <Button variant="linkMobile" as="a">
+                Pleion
+              </Button>
+            </NextLink>
+            <NextLink href="produtos/plastico">
+              <Button variant="linkMobile" as="a">
+                Plástico
+              </Button>
+            </NextLink>
+            <NextLink href="produtos/filmpvc">
+              <Button variant="linkMobile" as="a">
+                Film PVC
+              </Button>
+            </NextLink>
+            <NextLink href="/produtos/sacolas">
+              <Button variant="linkMobile" as="a">
+                Sacolas
+              </Button>
+            </NextLink>
+            <NextLink href="/produtos/fitas">
+              <Button variant="linkMobile" as="a">
+                Fitas
+              </Button>
+            </NextLink>
+            <NextLink href="/produtos/mundial">
+              <Button variant="linkMobile" as="a">
+                Mundial
+              </Button>
+            </NextLink>
+            <NextLink href="/produtos/limpeza">
+              <Button variant="linkMobile" as="a">
+                Limpeza
+              </Button>
+            </NextLink>
+          </Grid>
+          <Grid>
+            <NextLink href="/produtos/suporte-acessorios">
+              <Button variant="linkMobile" as="a">
+                Suportes e Acessórios
+              </Button>
+            </NextLink>
+            <NextLink href="/produtos/sacos-plasticos">
+              <Button variant="linkMobile" as="a">
+                Sacos Plásticos
+              </Button>
+            </NextLink>
+            <NextLink href="/produtos/acessorios-acougue">
+              <Button variant="linkMobile" as="a">
+                Acessórios para Açougue
+              </Button>
+            </NextLink>
+            <NextLink href="/produtos/condimentos">
+              <Button variant="linkMobile" as="a">
+                Condimentos
+              </Button>
+            </NextLink>
+            <NextLink href="/produtos/sacos-lixo">
+              <Button variant="linkMobile" as="a">
+                Sacos de Lixo
+              </Button>
+            </NextLink>
+            <NextLink href="/produtos/luvas-mascaras-toucas">
+              <Button variant="linkMobile" as="a">
+                Luvas/Máscaras/Toucas
+              </Button>
+            </NextLink>
+            <NextLink href="/produtos/starret">
+              <Button variant="linkMobile" as="a">
+                Starrett
+              </Button>
+            </NextLink>
+          </Grid>
         </Grid>
       }
       {isCartOpen &&
