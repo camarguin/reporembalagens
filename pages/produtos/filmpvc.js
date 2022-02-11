@@ -13,7 +13,7 @@ export default function Filmpvc({ products }) {
 }
 
 export async function getServerSideProps(context) {
-  const res = await getData(`product/pvc`);
+  const res = await getData(`product/filmpvc`);
   return {
     props: {
       products: res.products,
