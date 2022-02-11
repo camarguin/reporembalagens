@@ -13,7 +13,7 @@ export default function SacosPlastico({ products }) {
 }
 
 export async function getServerSideProps(context) {
-  const res = await getData(`product/sacosplastico`);
+  const res = await getData(`product/sacosplasticos`);
   return {
     props: {
       products: res.products,
