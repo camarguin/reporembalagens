@@ -107,8 +107,6 @@ const ProductCard = ({ product }) => {
             <Button type="submit" variant="primary" marginTop="5px" onClick={addItem} disabled={!product.stock} >
               Adicionar
             </Button>
-            {/* {!product.stock && <Text whiteSpace="nowrap" variant="error">* Sem Estoque</Text>} */}
-
           </FormControl>
         </Box>
       }
@@ -118,15 +116,13 @@ const ProductCard = ({ product }) => {
         borderColor="myGreen.300"
         height="300px"
         textAlign="center"
-        p="10px" //Added
+        p="10px"
       >
-        {/* <Box maxHeight="140px" height="150px" width="200px" p="10px 0" position="relative" bgColor="red"> */}
         <Box height="145px" width="200px" position="relative" p="10px 0" margin="0 auto">
-          {/* <Image src={product.image} alt="Produto Imagem" boxSize="fit" margin="0 auto" maxHeight="140px" /> */}
           <NextImage src={product.image} alt="Produto" layout="fill" objectFit="contain" />
         </Box>
         <VStack spacing="0">
-          <Text variant="productName">
+          <Text variant="productName" >
             {product.name}
           </Text>
           <Text variant="productDescription">
@@ -134,7 +130,6 @@ const ProductCard = ({ product }) => {
           </Text>
           <Text variant="productCode">
             COD {product.cod}
-            {/* {product.stock} */}
           </Text>
         </VStack>
       </Box>

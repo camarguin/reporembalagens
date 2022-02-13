@@ -19,12 +19,14 @@ export const textStyles = {
       fontSize: "1.1rem"
     },
     productName: {
-      fontSize: "1.5rem",
-      fontWeight: "medium"
+      fontSize: "1.3rem",
+      fontWeight: "medium",
+      textTransform: "capitalize"
     },
     productDescription: {
-      fontSize: "1.3rem",
-      fontWeight: "regular"
+      fontSize: "1.2rem",
+      fontWeight: "regular",
+      textTransform: "capitalize"
     },
     productCode: {
       fontSize: "1.2rem",
