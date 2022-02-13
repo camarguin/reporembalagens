@@ -20,7 +20,7 @@ const OrdersHistory = ({ orders }) => {
       </Text>
       <Grid templateColumns={["0.2fr 0.5fr 0.2fr", "0.5fr 1.5fr 0.5fr", "0.3fr 1fr 0.3fr"]} padding="0px 10px">
         <Text>Pago</Text>
-        <Text>Codigo da Ordem</Text>
+        <Text>Código da Ordem</Text>
         <Text>Data</Text>
       </Grid>
       <Stack spacing={2} justify="flex-start">
@@ -29,7 +29,7 @@ const OrdersHistory = ({ orders }) => {
         ))}
         {myOrders.length === 0 &&
           <Text align="center">
-            * Voce ainda nao possui nenhum pedido
+            * Você ainda não possui nenhum pedido
           </Text>
         }
       </Stack>

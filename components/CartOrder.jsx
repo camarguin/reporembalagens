@@ -9,7 +9,7 @@ const CartOrder = ({ item, dispatch, cart }) => {
         <Text variant="p">{item.quantity}</Text>
       </GridItem>
       <GridItem>
-        <Text variant="p">{item.name}</Text>
+        <Text variant="p" textTransform="capitalize">{item.name}</Text>
       </GridItem>
       <GridItem >
         <IconButton

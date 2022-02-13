@@ -2,6 +2,7 @@ import { useState, useContext, useEffect } from 'react';
 import { useRouter } from 'next/router'
 import { Container, Text, Stack, IconButton, Grid, GridItem, Button, Flex, useToast } from '@chakra-ui/react';
 import { AiOutlineClose } from 'react-icons/ai';
+import { BrowserView, MobileView, isBrowser, isMobile, isSafari } from 'react-device-detect';
 import CartOrder from './CartOrder';
 import EmptyCart from './EmptyCart';
 import { DataContext } from '../context/GlobalState';
@@ -15,7 +16,6 @@ const MyCart = ({ closeOnClick, user }) => {
   const [myUser, setMyUser] = useState(user)
   const { cart } = state
   const [isEmpty, setIsEmpty] = useState(cart.length === 0)
-  // var windowReference = window.open();
 
   useEffect(() => {
     setIsEmpty(cart.length === 0)
@@ -43,24 +43,35 @@ const MyCart = ({ closeOnClick, user }) => {
           isClosable: true,
         })
       } else {
-        postData('order', { cart, user }).then(res => {
-          toast({
-            title: 'Pedido salvo',
-            description: "Seu pedido foi salva com sucesso, você será redirecionado para o whatsapp da reporembalagens",
-            status: 'success',
-            duration: 9000,
-            isClosable: true,
+        //If it's on safari
+        if (isSafari) {
+          postData('order', { cart, user }).then(res => {
+            toast({
+              title: 'Pedido salvo',
+              description: "Seu pedido foi salva com sucesso, Entre em contato com a reporembalagens pelo whatsapp para confirmar seu pedido",
+              status: 'success',
+              duration: 9000,
+              isClosable: true,
+            })
           })
-          const autoMessageOrder = `
+        } else
+          postData('order', { cart, user }).then(res => {
+            toast({
+              title: 'Pedido salvo',
+              description: "Seu pedido foi salva com sucesso, você será redirecionado para o whatsapp da reporembalagens",
+              status: 'success',
+              duration: 9000,
+              isClosable: true,
+            })
+            const autoMessageOrder = `
             ID do Pedido: ${res.newOrder._id}
             Nome: ${myUser.name}
             Pedido: 
             ${cart.map(product => ` ${product.name} - ${product.quantity}\n `)} 
             `
-          window.open(`https://api.whatsapp.com/send?phone=5534997673100&text=${encodeURI(autoMessageOrder)}`, "_blank")
-          // windowReference.location = `https://api.whatsapp.com/send?phone=5534997673100&text=${encodeURI(autoMessageOrder)}`
-        }
-        )
+            window.open(`https://api.whatsapp.com/send?phone=5534997673100&text=${encodeURI(autoMessageOrder)}`, "_blank")
+          }
+          )
         dispatch(clearCart())
         closeOnClick()
       }

@@ -22,7 +22,7 @@ const OrderInfo = ({ order }) => {
       </Grid>
       {order.products.map(product => (
         <Grid key={product._id} templateColumns="0.9fr 0.3fr" padding="5px 0px">
-          <Text>{product.name}</Text>
+          <Text textTransform="capitalize">{product.name}</Text>
           <Text textAlign="center">{product.quantity}</Text>
         </Grid>
       ))}

@@ -40,11 +40,5 @@ export async function getServerSideProps(context) {
       session: await getSession(context)
     }
   }
-  // const res = await getData(`order/${session.user._id}`)
-  // return {
-  //   props: {
-  //     session: await getSession(context),
-  //     orders: res.orders
-  //   },
-  // };
+
 }
