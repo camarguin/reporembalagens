@@ -70,7 +70,7 @@ const MyTable = ({ columns, data, isProducts }) => {
             );
           })}
         </Thead>
-        <Tbody {...getTableBodyProps()} textTransform="capitalize">
+        <Tbody {...getTableBodyProps()}>
           {page.map((row) => {
             prepareRow(row);
             const { key, ...restRowProps } = row.getRowProps();
