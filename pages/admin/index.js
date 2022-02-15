@@ -7,12 +7,10 @@ import AdminDashboard from '../../components/AdminDashboard';
 export default function Index({ session }) {
   return (
     <AdminLayout isShortFooter>
-      {/* <AdminHeader /> */}
       <Text>
         Bem vindo, {session.user.name}
       </Text>
       {/* <AdminDashboard /> */}
-
     </AdminLayout>
   )
 }
