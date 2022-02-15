@@ -17,6 +17,7 @@ export default function Conta({ session, orders }) {
   const router = useRouter()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [noInfo, setNoInfo] = useState(undefined)
+  // const [myUser, setMyUser] = useState(session.user)
 
   function sortOrders(myOrders) {
     return myOrders.sort((a, b) =>

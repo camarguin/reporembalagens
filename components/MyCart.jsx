@@ -2,7 +2,8 @@ import { useState, useContext, useEffect } from 'react';
 import { useRouter } from 'next/router'
 import { Container, Text, Stack, IconButton, Grid, GridItem, Button, Flex, useToast } from '@chakra-ui/react';
 import { AiOutlineClose } from 'react-icons/ai';
-import { BrowserView, MobileView, isBrowser, isMobile, isSafari } from 'react-device-detect';
+import { isSafari } from 'react-device-detect';
+import { useSession } from 'next-auth/client';
 import CartOrder from './CartOrder';
 import EmptyCart from './EmptyCart';
 import { DataContext } from '../context/GlobalState';
@@ -12,10 +13,15 @@ import { clearCart } from '../context/Actions';
 const MyCart = ({ closeOnClick, user }) => {
   const router = useRouter()
   const toast = useToast()
+  // const [session, loading] = useSession()
   const { state, dispatch } = useContext(DataContext)
   const [myUser, setMyUser] = useState(user)
   const { cart } = state
   const [isEmpty, setIsEmpty] = useState(cart.length === 0)
+
+  // useEffect(() => {
+  //   setMyUser(user)
+  // }, [user])
 
   useEffect(() => {
     setIsEmpty(cart.length === 0)
@@ -33,7 +39,7 @@ const MyCart = ({ closeOnClick, user }) => {
       })
       return router.push("/conta/login")
     } else
-      if (myUser.cpf === '' && myUser.address.street === '' && myUser.name === '' && myUser.phone && myUser.address.district === '') {
+      if (myUser.cpf === '' || myUser.name === '' || myUser.phone === '' || myUser.address.street === '' || myUser.address.district === '' || myUser.address.cep === '') {
         toast({
           title: 'Atualize seus dados',
           description: "Para pedir o orçamento você precisa atualizar seus dados no seu perfil",

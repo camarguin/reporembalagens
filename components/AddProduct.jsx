@@ -49,7 +49,7 @@ const AddProduct = ({ isOpen, onClose }) => {
       return (
         e.target.value = null,
         toast({
-          title: 'Formato nao aceito',
+          title: 'Formato não aceito',
           description: "Imagem deve ser png ou jpeg",
           status: 'error',
           duration: 9000,
@@ -118,7 +118,7 @@ const AddProduct = ({ isOpen, onClose }) => {
                 <option value="acessoriosacougue">Acessórios para açougue</option>
                 <option value="aluminio">Alumínio</option>
                 <option value="condimentos">Condimento</option>
-                <option value="pvc">Film PVC</option>
+                <option value="filmpvc">Film PVC</option>
                 <option value="fitas">Fitas</option>
                 <option value="galvanotek">Galvanotek</option>
                 <option value="isopor">Isopor</option>
@@ -130,7 +130,7 @@ const AddProduct = ({ isOpen, onClose }) => {
                 <option value="pleion">Pleion</option>
                 <option value="sacolas">Sacolas</option>
                 <option value="sacoslixo">Sacos de Lixo</option>
-                <option value="sacosplastico">Sacos de Plástico</option>
+                <option value="sacosplasticos">Sacos de Plástico</option>
                 <option value="starret">Starrett</option>
                 <option value="suporteacessorios">Suporte acessórios</option>
               </Select>

@@ -56,6 +56,7 @@ const FormProfile = ({ onSubmit, user }) => {
         cep: userData.cep,
       })
     }).then(response => (
+      router.reload(),
       toast({
         title: 'Conta atualizada',
         description: 'Suas informações foram salvas com sucesso',
@@ -64,6 +65,7 @@ const FormProfile = ({ onSubmit, user }) => {
         isClosable: true,
       })
     ))
+    // window.location.reload(false);
     router.push('/conta')
   }
 
@@ -96,7 +98,7 @@ const FormProfile = ({ onSubmit, user }) => {
               <Stack direction="column" spacing={0}>
                 <FormLabel htmlFor='email'>Email</FormLabel>
                 <Input type="text" id="email" name="email" value={email} onChange={handleChangeInput}
-                  placeholder="Email" bgColor="gray.100" isRequired/>
+                  placeholder="Email" bgColor="gray.100" isRequired />
               </Stack>
             </Grid>
           </Stack>
