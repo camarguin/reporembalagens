@@ -54,7 +54,7 @@ const MyCart = ({ closeOnClick, user }) => {
           postData('order', { cart, user }).then(res => {
             toast({
               title: 'Pedido salvo',
-              description: "Seu pedido foi salva com sucesso, Entre em contato com a reporembalagens pelo whatsapp para confirmar seu pedido",
+              description: "Seu pedido foi salvo com sucesso, Entre em contato com a reporembalagens pelo whatsapp para confirmar seu pedido",
               status: 'success',
               duration: 9000,
               isClosable: true,
@@ -64,7 +64,7 @@ const MyCart = ({ closeOnClick, user }) => {
           postData('order', { cart, user }).then(res => {
             toast({
               title: 'Pedido salvo',
-              description: "Seu pedido foi salva com sucesso, você será redirecionado para o whatsapp da reporembalagens",
+              description: "Seu pedido foi salvo com sucesso, você será redirecionado para o whatsapp da reporembalagens",
               status: 'success',
               duration: 9000,
               isClosable: true,
