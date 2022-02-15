@@ -96,7 +96,7 @@ const FormProfile = ({ onSubmit, user }) => {
               <Stack direction="column" spacing={0}>
                 <FormLabel htmlFor='email'>Email</FormLabel>
                 <Input type="text" id="email" name="email" value={email} onChange={handleChangeInput}
-                  placeholder="Email" bgColor="gray.100" />
+                  placeholder="Email" bgColor="gray.100" isRequired/>
               </Stack>
             </Grid>
           </Stack>

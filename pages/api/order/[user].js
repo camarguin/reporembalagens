@@ -14,7 +14,7 @@ export default async (req, res) => {
 const getOrders = async (req, res) => {
   const { user } = req.query
   try {
-    const orders = await Orders.find({ user: { $eq: user } })
+    const orders = await Orders.find({ userId: { $eq: user } })
     res.json({
       status: 'success',
       result: orders.length,

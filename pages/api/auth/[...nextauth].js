@@ -20,7 +20,7 @@ export default NextAuth({
         const password = credentials.password;
         const user = await Users.findOne({ email })
         if (!user) {
-          throw new Error('Usuario nao encontrado')
+          throw new Error('Usuário não encontrado')
         }
         const isMatch = await bcrypt.compare(password, user.password)
         if (!isMatch) {
