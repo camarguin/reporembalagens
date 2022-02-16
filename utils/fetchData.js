@@ -17,7 +17,8 @@ export const postData = async (url, post, token) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': token
+      'Authorization': token,
+      'Access-Control-Allow-Origin': '*'
     },
     body: JSON.stringify(post)
   })
