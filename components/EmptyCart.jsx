@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Image, Text, Button, Box, Flex } from '@chakra-ui/react';
+import { Image, Text, Button, Box, Flex } from '@chakra-ui/react';
 
 const EmptyCart = () => {
   return (
