@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { getSession } from 'next-auth/client';
 import { Text } from '@chakra-ui/react';
+import moment from 'moment';
 import AdminLayout from '../../components/AdminLayout'
 import AdminDashboard from '../../components/AdminDashboard';
-import moment from 'moment';
 import { getData } from '../../utils/fetchData';
 
 export default function Index({ session, orders }) {
@@ -33,7 +33,7 @@ export default function Index({ session, orders }) {
       <Text>
         Bem vindo, {session.user.name}
       </Text>
-      {/* <AdminDashboard data={[5, 2, 1, 3, 2, 5, 0]} /> */}
+      <AdminDashboard data={[5, 2, 1, 3, 2, 5, 0]} />
     </AdminLayout>
   )
 }

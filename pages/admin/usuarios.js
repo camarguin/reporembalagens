@@ -1,7 +1,7 @@
 import React from 'react'
 import { getSession } from 'next-auth/client';
-import MyTable from '../../components/MyTable';
 import { getData } from '../../utils/fetchData';
+import MyTable from '../../components/MyTable';
 import AdminLayout from '../../components/AdminLayout';
 import AdminTitleBanner from '../../components/AdminTitleBanner';
 

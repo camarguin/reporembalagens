@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { Flex, FormControl, Button, Input, Text, Stack, useToast, FormLabel, Box, Grid } from "@chakra-ui/react"
 
@@ -65,7 +64,6 @@ const FormProfile = ({ onSubmit, user }) => {
         isClosable: true,
       })
     ))
-    // window.location.reload(false);
     router.push('/conta')
   }
 

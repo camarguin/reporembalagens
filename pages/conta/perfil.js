@@ -1,5 +1,4 @@
 import React from 'react'
-import Head from "next/head";
 import { useRouter } from 'next/router'
 import { Button } from '@chakra-ui/react'
 import { getSession } from 'next-auth/client'

@@ -2,7 +2,6 @@ import { Container, Text } from '@chakra-ui/react';
 import Head from 'next/head'
 import Footer from './Footer';
 import Header from './Header';
-import TitleBanner from './TitleBanner';
 
 const Layout = ({ children, isShortFooter, isUserPage, titlePage }) => {
   return (

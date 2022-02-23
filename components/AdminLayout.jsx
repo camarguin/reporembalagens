@@ -1,7 +1,5 @@
 import { Container, Text } from '@chakra-ui/react';
 import AdminHeader from './AdminHeader';
-import Footer from './Footer';
-import Header from './Header';
 
 const AdminLayout = ({ children, isShortFooter, isUserPage }) => {
   return (

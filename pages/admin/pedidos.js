@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { getSession } from 'next-auth/client';
-import { Text, Switch, useToast, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, IconButton, ModalCloseButton, useDisclosure } from '@chakra-ui/react';
+import {
+  Text, Switch, useToast, Modal, ModalOverlay, ModalContent,
+  ModalHeader, ModalBody, IconButton, ModalCloseButton, useDisclosure
+} from '@chakra-ui/react';
 import { CopyIcon } from '@chakra-ui/icons';
 import { compareDesc, parseISO } from 'date-fns'
 import moment from 'moment';

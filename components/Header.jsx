@@ -2,17 +2,17 @@ import React, { useContext, useState } from "react";
 import Image from 'next/image';
 import NextLink from 'next/link';
 import { useRouter } from "next/router";
+import { signOut, useSession } from 'next-auth/client'
 import {
   Flex, Button, IconButton, Grid, useMediaQuery, useDisclosure, Accordion,
   AccordionItem, AccordionButton, AccordionPanel, Text
 } from '@chakra-ui/react';
 import { BiUserCircle, BiMenu } from 'react-icons/bi';
 import { AiOutlineShoppingCart, AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
-import { signOut, useSession } from 'next-auth/client'
 import reporLogo from '../public/ReporLogoMenu.svg';
 import whiteReporLogo from '../public/WhiteReporLogoMenu.svg';
-import MyCart from "./MyCart";
 import { DataContext } from "../context/GlobalState";
+import MyCart from "./MyCart";
 
 const Header = ({ isUserPage }) => {
   const [isSmallerThan1024] = useMediaQuery("(max-width: 1023px)")
