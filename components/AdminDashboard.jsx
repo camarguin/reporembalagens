@@ -7,10 +7,10 @@ const Chart = dynamic(
 )
 
 
-const AdminDashboard = () => {
+const AdminDashboard = ({ data }) => {
   const series = [{
     name: "Pedidos",
-    data: [10, 41, 35, 51, 49, 62, 69]
+    data: data
   }];
   const options = {
     chart: {
@@ -29,6 +29,9 @@ const AdminDashboard = () => {
     title: {
       text: 'Quantidade de pedidos por dia durante a semana',
       align: 'left'
+    },
+    fill: {
+      colors: ['#0C7149', '#000000', '#000000']
     },
     grid: {
       row: {
