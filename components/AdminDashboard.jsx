@@ -1,12 +1,18 @@
 import React from 'react';
-import { Container } from '@chakra-ui/react';
+import { Flex, Box } from '@chakra-ui/react';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Doughnut } from 'react-chartjs-2';
+ChartJS.register(ArcElement, Tooltip, Legend);
 
-const AdminDashboard = ({ data }) => {
+const AdminDashboard = ({ options, data }) => {
 
   return (
-    <Container>
-
-    </Container>
+    <Flex direction="row" width="320px">
+      <Doughnut
+        options={options}
+        data={data}
+      />
+    </Flex>
   );
 };
 

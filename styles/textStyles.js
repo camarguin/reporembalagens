@@ -32,6 +32,25 @@ export const textStyles = {
       fontSize: "1.2rem",
       fontWeight: "bold"
     },
+    dashboardWelcome: {
+      fontSize: "1.7rem",
+      fontWeight: "600",
+      color: "myGreen.300"
+    },
+    dashboardTitle: {
+      fontSize: "1.9rem",
+      fontWeight: "700",
+      color: "myGreen.300",
+    },
+    dashboardCardTitle: {
+      fontSize: "1.2rem",
+      fontWeight: "600",
+    },
+    dashboardIncreased: {
+      fontSize: " 1.5rem",
+      fontWeight: "700",
+      color: "myGreen.300",
+    },
     footer: {
       py: 3,
       fontWeight: "extrabold",
